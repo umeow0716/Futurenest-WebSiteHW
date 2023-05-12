@@ -65,6 +65,7 @@ const Item = (props) => {
     `;
 
     const LastIcon = styled.div`
+        display: flex;
         margin-left: auto;
     `;
     return (
