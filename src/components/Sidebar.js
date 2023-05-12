@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 import icon from './icon.svg'
-import overviewIcon from './overview.svg'
-import money from './money.svg'
+import IconList from './IconList.js'
+
+import right from './right.js'
+import down from './down.js'
 
 const Base = styled.div`
     background: #FFFFFF;
     min-height: auto;
-    min-width: 13vw;
+    min-width: 15vw;
     box-shadow: 3px 3px 5px #E9E9E9;
     align-items: start;
     justify-items: center;
@@ -34,32 +36,42 @@ const Item = (props) => {
         height: 4vmin;
         width: 83%;
         
+        flex-direction: row;
         align-items: center;
-        justify-items: center;
         padding: 1vmin;
         margin: 2vmin;
-
-        transition: background-color 200ms ease-out 30ms;
+        
+        color: #999999;
+        transition: background-color 200ms, color 200ms, fill 500ms ease-out 30ms;
+        
+        & path {
+            fill: #999999
+        }
 
         &:hover {
             background-color: #93F0F0;
+            color: black;
+        }
+
+        &:hover path {
+            fill: black;
         }
     `;
 
     const TextBox = styled.b`
         font-family: Inter;
         font-size: 19px;
-        color: black;
-        padding: 1vmin
+        padding: 1vmin;
     `;
 
-    const LastIcon = styled.img`
-        justify-items: end;
+    const LastIcon = styled.div`
+        margin-left: auto;
     `;
     return (
         <Object>
-            <img src={props.icon} alt="icon"/>
+            <props.icon alt="icon"/>
             <TextBox>{props.text}</TextBox>
+            <LastIcon>{props.LastIcon ? <props.LastIcon /> : ""}</LastIcon>
         </Object>
     )
 }
@@ -71,9 +83,12 @@ function Sidebar() {
         <Base>
             <img src={icon} alt="logo" />
             <ItemList>
-                <Item icon={overviewIcon} text="Overview"/>
-                <Item icon={money} text="Item"/>
-                <Item icon={overviewIcon} text="Item"/>
+                <Item icon={IconList.Overview} text="Overview"/>
+                <Item icon={IconList.Finance} LastIcon={right} text="Finance" alt="right"/>
+                <Item icon={IconList.Sales} LastIcon={right} text="Sales"/>
+                <Item icon={IconList.HR} LastIcon={right} text="HR"/>
+                <Item icon={IconList.Invoicing} LastIcon={down} text="Invoicing"/>
+                <Item icon={IconList.Genuine_AI} LastIcon={down} text="Genuie AI"/>
             </ItemList>
         </Base>
     )
