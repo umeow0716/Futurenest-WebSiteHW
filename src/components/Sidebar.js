@@ -88,8 +88,8 @@ function Sidebar() {
                 <Item icon={IconList.Finance} LastIcon={right} text="Finance" alt="right"/>
                 <Item icon={IconList.Sales} LastIcon={right} text="Sales"/>
                 <Item icon={IconList.HR} LastIcon={right} text="HR"/>
-                <Item icon={IconList.Invoicing} LastIcon={down} text="Invoicing"/>
-                <Item icon={IconList.Genuine_AI} LastIcon={down} text="Genuie AI"/>
+                <Item icon={IconList.Invoicing} LastIcon={right} text="Invoicing"/>
+                <Item icon={IconList.Genuine_AI} LastIcon={right} text="Genuie AI"/>
             </ItemList>
         </Base>
     )
