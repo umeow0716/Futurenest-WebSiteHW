@@ -19,11 +19,11 @@ const Base = styled.div`
 
 const ItemList = styled.div`
     overflow: auto;
-    overflow-x: Hidden;
+    overflow-x: overlay;
     overflow-y: overlay;
     
     height: 90vh;
-    width: auto;
+    width: 100%;
     flex-direction: column;
 
     &:before {
@@ -167,6 +167,7 @@ class Element extends Component {
         height: auto;
 
         padding-left: 5vmin;
+        white-space: nowrap;
     `
 
     render() {
