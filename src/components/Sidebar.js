@@ -154,6 +154,7 @@ class Element extends Component {
         border-radius: 12px;
         
         transition: background-color 200ms, color 150ms ease-out 30ms;
+        text-align: start;
 
         &:hover {
             background-color: rgba(0, 0, 0, 0.8);
