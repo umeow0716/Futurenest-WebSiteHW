@@ -7,22 +7,27 @@ import IconList from './IconList.js'
 import Buttons from './Buttons.js'
 
 const Base = styled.div`
+    display: flex;
     background: #FFFFFF;
-    min-height: 10vh;
+    max-height: 100vh;
     min-width: 16vw;
     box-shadow: 3px 3px 5px #E9E9E9;
-    align-items: start;
+    align-items: center;
     justify-items: center;
-    padding-top: 2vh;
     flex-direction: column;
+`;
+
+const Image = styled.img`
+    padding-top: 2vh;
+    padding-bottom: 2vh;
 `;
 
 const ItemList = styled.div`
     overflow: auto;
-    overflow-x: overlay;
+    overflow-x: hidden;
     overflow-y: overlay;
     
-    height: 90vh;
+    height: 100%;
     width: 100%;
     flex-direction: column;
 
@@ -223,7 +228,7 @@ class Item extends Component {
 function Sidebar() {
     return (
         <Base>
-            <img src={icon} alt="logo" />
+            <Image src={icon} alt="logo" />
             <ItemList>
                 <Item icon={IconList.Overview} text="Overview" LastIcon="0"></Item>
                 <Item icon={IconList.Finance} text="Finance" LastIcon="1">
