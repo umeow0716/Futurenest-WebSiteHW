@@ -1,7 +1,7 @@
 import './CenterColumn';
 function CenterColumn() {
     return (
-        <h1>hihihihihihihihihihihhihihihihihihihi</h1>
+        <h1>A Test Content</h1>
     )
 }
 

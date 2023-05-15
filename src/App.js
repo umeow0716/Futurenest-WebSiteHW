@@ -16,19 +16,15 @@ const Main = styled.div`
 function App() {
   return (
     <div className='container'>
-      <div className='Sideebar'>
       <Main>
         <Sidebar />
       </Main>
-      </div>
       <div className='CenterColumn'>
-        <div className='top'>
-
-        </div>
+        <div className='top' />
+        
         <div className='context'>
           <CenterColumn />
         </div>
-        
       </div>  
     </div>
   );
