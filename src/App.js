@@ -1,6 +1,6 @@
 import './App.css'
 import styled from 'styled-components'
-import Sidebar from './src/components/Sidebar'
+import Sidebar from './components/Sidebar.js'
 import CenterColumn from './components/CenterColumn/CenterColumn'
 
 const Main = styled.div`
@@ -18,7 +18,7 @@ function App() {
     <div className='container'>
       <div className='Sideebar'>
       <Main>
-      <Sidebar />
+        <Sidebar />
       </Main>
       </div>
       <div className='CenterColumn'>

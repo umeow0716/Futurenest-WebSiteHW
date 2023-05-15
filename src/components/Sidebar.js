@@ -8,8 +8,8 @@ import Buttons from './Buttons.js'
 
 const Base = styled.div`
     background: #FFFFFF;
-    min-height: auto;
-    min-width: 20vw;
+    min-height: 10vh;
+    min-width: 16vw;
     box-shadow: 3px 3px 5px #E9E9E9;
     align-items: start;
     justify-items: center;
@@ -18,13 +18,41 @@ const Base = styled.div`
 `;
 
 const ItemList = styled.div`
-    height: 92%;
+    overflow: auto;
+    overflow-x: Hidden;
+    overflow-y: overlay;
+    
+    height: 90vh;
     width: auto;
     flex-direction: column;
 
     &:before {
         height: 500px;
         content:"";
+    }
+
+    &::-webkit-scrollbar {
+        display: flex;
+        width: 7px;
+    }
+
+    &::-webkit-scrollbar-button {
+        background: transparent;
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-track-piece {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, 0.4);
+        border: none;
+    }
+
+    &::-webkit-scrollbar-track {
+        box-shadow: transparent;
     }
 `;
 
@@ -42,7 +70,7 @@ class ItemTitle extends Component {
     Object = styled.button`
         display: flex;
         
-        border:none;
+        border: none;
         background-color:transparent;
         border-radius: 10px;
         height: 6vmin;
@@ -62,11 +90,11 @@ class ItemTitle extends Component {
 
         &:hover {
             background-color: #93F0F0;
-            color: black;
+            color: rgba(0, 0, 0, 0.8);
         }
 
         &:hover path {
-            fill: black;
+            fill: rgba(0, 0, 0, 0.8);
         }
     `;
 
@@ -112,23 +140,41 @@ class Element extends Component {
         this.props = props;
     }
 
-    Object = styled.a`
-        width: auto;
+    Base = styled.div`
         font-family: 'Noto Sans TC';
         display: flex;
         font-size: 13px;
         color: rgba(0, 0, 0, 0.4);
 
-        padding-left: 7.5vmin;
-        padding-top: 1.4vmin;
-        text-transform: capitalize;
+        width: 90%;
+        margin: 1vh 0vmin 2vmin 2vmin;
+
+        padding-top: 0.5vh;
+        padding-bottom: 0.5vh;
+        border-radius: 12px;
+        
+        transition: background-color 200ms, color 150ms ease-out 30ms;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: rgba(255, 255, 255, 1);
+        }
     `;
+    
+    TextBase = styled.div`
+        width: auto;
+        height: auto;
+
+        padding-left: 5vmin;
+    `
 
     render() {
         return (
-            <this.Object>
-                {this.props.text}
-            </this.Object>
+            <this.Base>
+                <this.TextBase>
+                    {this.props.text}
+                </this.TextBase>
+            </this.Base>
         )
     }
 }
@@ -181,12 +227,31 @@ function Sidebar() {
                 <Item icon={IconList.Finance} text="Finance" LastIcon="1">
                     <Element text="Profit And Loss" />
                     <Element text="Cash Flow Analysis" />
+                    <Element text="Receivable & Payable" />
+                    <Element text="Product Performance" />
+                    <Element text="Project Performance" />
+                    <Element text="Petty Cash In & Out" />
                 </Item>
                 <Item icon={IconList.Sales} text="Sales" LastIcon="1">
+                    <Element text="Product Sales" />
+                    <Element text="Business Analysis" />
                 </Item>
-                <Item icon={IconList.HR} text="HR" LastIcon="1"></Item>
-                <Item icon={IconList.Invoicing} text="Invoicing" LastIcon="1"></Item>
-                <Item icon={IconList.Genuine_AI} text="Genuie AI" LastIcon="1"></Item>
+                <Item icon={IconList.HR} text="HR" LastIcon="1">
+                    <Element text="Salary List" />
+                    <Element text="Health Insurance" />
+                    <Element text="Welfare Work" />
+                    <Element text="Hour Management" />
+                </Item>
+                <Item icon={IconList.Invoicing} text="Invoicing" LastIcon="1">
+                    <Element text="Purchase Source" />
+                    <Element text="Inventory" />
+                    <Element text="Shipping" />
+                </Item>
+                <Item icon={IconList.Genuine_AI} text="Genuie AI" LastIcon="1">
+                    <Element text="Income & Expenditure" />
+                    <Element text="Sales Forecast" />
+                    <Element text="Transactions" />
+                </Item>
             </ItemList>
         </Base>
     )
