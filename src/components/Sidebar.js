@@ -9,12 +9,14 @@ import Buttons from './Buttons.js'
 const Base = styled.div`
     display: flex;
     background: #FFFFFF;
-    max-height: 100vh;
-    min-width: 16vw;
+    height: 100vh;
+    width: 16vw;
+    max-width: 16vw;
     box-shadow: 3px 3px 5px #E9E9E9;
     align-items: center;
     justify-items: center;
     flex-direction: column;
+    z-index: 100;
 `;
 
 const Image = styled.img`
@@ -24,7 +26,7 @@ const Image = styled.img`
 
 const ItemList = styled.div`
     overflow: auto;
-    overflow-x: hidden;
+    overflow-x: overlay;
     overflow-y: overlay;
     
     height: 100%;
@@ -39,6 +41,7 @@ const ItemList = styled.div`
     &::-webkit-scrollbar {
         display: flex;
         width: 7px;
+        height: 10px;
     }
 
     &::-webkit-scrollbar-button {

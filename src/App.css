@@ -1,19 +1,26 @@
 .CenterColumn{
   display: flex;
+  flex-wrap: wrap;
   
   background-color:#F9F9F9;
   flex-direction: column;
-  margin-left: 5px;
   
-  width: 100%;
-  height: 100%;
+  width: 80vw;
+  height: 100vh;
+
+  border-left: 5%;
 }
+
 .top{
   align-self: center;
   width: 90%;
   height: 10vh;
   border-bottom: solid #EDEDED;
 }
+
 .context{
-  margin-left: 5%;
+  display: flex;
+  flex: 1;
+  width: 80vw;
+  padding-left: 5%;
 }
