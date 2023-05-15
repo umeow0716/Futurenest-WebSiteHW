@@ -1,5 +1,7 @@
+import './App.css'
 import styled from 'styled-components'
-import Sidebar from './components/Sidebar'
+import Sidebar from './src/components/Sidebar'
+import CenterColumn from './components/CenterColumn/CenterColumn'
 
 const Main = styled.div`
   text-align: center;
@@ -13,9 +15,22 @@ const Main = styled.div`
 
 function App() {
   return (
-    <Main>
-        <Sidebar />
-    </Main>
+    <div className='container'>
+      <div className='Sideebar'>
+      <Main>
+      <Sidebar />
+      </Main>
+      </div>
+      <div className='CenterColumn'>
+        <div className='top'>
+
+        </div>
+        <div className='context'>
+          <CenterColumn />
+        </div>
+        
+      </div>  
+    </div>
   );
 }
 

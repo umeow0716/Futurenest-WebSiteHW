@@ -80,7 +80,6 @@ class ItemTitle extends Component {
         display: flex;
         margin-left: auto;
     `;
-
     change = () => {
         if (this.state.data === "right") {
             this.setState({
