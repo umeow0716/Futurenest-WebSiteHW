@@ -1,0 +1,32 @@
+.container{
+  display: flex;
+  height: 1000px;
+}
+.Sideebar{
+  flex: 1;
+  position: fixed;
+  z-index: 100;
+}
+.CenterColumn{
+  flex: 1;
+  margin-left: 15%;
+  background-color:#F9F9F9;
+  width: 100%;
+  height:100%;
+}
+.top{
+    background-color:#F9F9F9;
+    position:fixed;
+    width: 85%;
+    height:50px;
+    right:0;
+    top:0px;
+    z-index: 99;
+    box-shadow: 0 1px 0px 0 rgba(165, 165, 165, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+}
+.context{
+  margin-top: 50px;
+  position: absolute;
+  background-color:#F9F9F9;
+  margin-left: 5%;
+}
