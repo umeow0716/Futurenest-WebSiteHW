@@ -1,6 +1,9 @@
 .CenterColumn{
+  overflow: auto;
+  overflow-x: overlay;
+  overflow-y: overlay;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   
   background-color:#F9F9F9;
   flex-direction: column;
@@ -9,13 +12,42 @@
   height: 100vh;
 }
 
+.CenterColumn::-webkit-scrollbar {
+  display: flex;
+  width: 7px;
+  height: 10px;
+}
+
+.CenterColumn::-webkit-scrollbar-button {
+  background: transparent;
+  border-radius: 4px;
+}
+
+.CenterColumn::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+
+.CenterColumn::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none;
+}
+
+.CenterColumn::-webkit-scrollbar-track {
+  box-shadow: transparent;
+}
+
 .top{
   position: sticky;
+  top: 0;
+  
   display: flex;
   z-index: 99;
   align-self: center;
+  
   width: 85%;
   height: 10vh;
+  min-height: 10vh;
   border-bottom: solid #EDEDED;
 
   align-items: center;
@@ -23,6 +55,17 @@
   font-family: 'Noto Sans TC';
   font-size: 14px;
   font-weight: bold;
+
+  background-color: #F9F9F9;
+}
+
+.top::before {
+  position: absolute;
+  content: '';
+  background-color: #F9F9F9;
+  width: 84vw;
+  height: 100%;
+  z-index: -1;
 }
 
 .top img {
