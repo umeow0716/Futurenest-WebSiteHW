@@ -2,6 +2,8 @@ import './App.css'
 import styled from 'styled-components'
 import Sidebar from './components/Sidebar.js'
 import CenterColumn from './components/CenterColumn/CenterColumn'
+import Notification from './Notification.svg'
+import Cloud from './Cloud.svg'
 
 const Main = styled.div`
   text-align: center;
@@ -16,12 +18,24 @@ const Main = styled.div`
   width: 100vw;
 `;
 
+const Avatar = styled.img`
+  height: 40px;
+  width: 40px;
+  border-radius: 100px;
+  object-fit: cover;
+`;
+
 function App() {
   return (
       <Main>
         <Sidebar />
         <div className='CenterColumn'>
-            <div className='top' />
+            <div className='top'>
+              <img src={Cloud} alt="Cloud" />
+              <img src={Notification} alt="Notification" />
+              <Avatar src="/avatar.jpg" alt='Avatar' />
+              Johnson Finch
+            </div>
         
             <div className='context'>
                 <CenterColumn />
