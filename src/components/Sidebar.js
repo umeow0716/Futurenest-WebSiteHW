@@ -97,7 +97,7 @@ class ItemTitle extends Component {
         }
 
         &:hover {
-            background-color: #93F0F0;
+            background-color: #F2F2F2;
             color: rgba(0, 0, 0, 0.8);
         }
 
