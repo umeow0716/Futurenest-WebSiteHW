@@ -1,0 +1,372 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.AccumulatedProfitAndLoss{
+    /* Frame 42 */
+
+
+box-sizing: border-box;
+
+/* Auto layout */
+
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 980px;
+height: 233px;
+
+background: #FFFFFF;
+/* black/10% */
+
+border: 1px solid rgba(0, 0, 0, 0.1);
+/* card */
+
+box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.06);
+border-radius: 12px;
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 0;
+margin-bottom: 5px;
+margin-right: 5px;
+margin-top: 5px;
+}
+.MonthlyIncome{
+    box-sizing: border-box;
+
+/* Auto layout */
+
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+
+width: 980px;
+height: 385px;
+
+background: #FFFFFF;
+/* black/10% */
+
+border: 1px solid rgba(0, 0, 0, 0.1);
+/* card */
+
+box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.06);
+border-radius: 12px;
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+align-self: stretch;
+flex-grow: 1;
+margin-bottom: 5px;
+margin-right: 5px;
+margin-top: 5px;
+}
+.FinanceRow{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+}
+.CurrentCashProfile{
+    box-sizing: border-box;
+
+/* Auto layout */
+flex: 1.5;
+align-items: flex-start;
+
+width: 600px;
+height: 242px;
+
+background: #FFFFFF;
+/* black/10% */
+
+border: 1px solid rgba(0, 0, 0, 0.1);
+/* card */
+
+box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.06);
+border-radius: 12px;
+
+margin-bottom: 5px;
+margin-right: 5px;
+margin-top: 5px;
+}
+.CurrentAccountsReceivable{
+box-sizing: border-box;
+
+/* Auto layout */
+flex: 0.5;
+align-items: flex-start;
+padding: 0px;
+
+width: 270px;
+height: 244px;
+
+background: #FFFFFF;
+/* black/10% */
+
+border: 1px solid rgba(0, 0, 0, 0.1);
+/* card */
+
+box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.06);
+border-radius: 12px;
+margin-left: 5px;
+margin-bottom: 5px;
+margin-right: 5px;
+margin-top: 5px;
+}
+.CashFlowThisMonth{
+    box-sizing: border-box;
+
+/* Auto layout */
+flex: 1.5;
+align-items: flex-start;
+
+width: 600px;
+height: 242px;
+
+background: #FFFFFF;
+/* black/10% */
+
+border: 1px solid rgba(0, 0, 0, 0.1);
+/* card */
+
+box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.06);
+border-radius: 12px;
+
+margin-bottom: 5px;
+margin-right: 5px;
+margin-top: 5px;
+}
+.CurrentAccountsPayable{
+box-sizing: border-box;
+
+/* Auto layout */
+flex: 0.5;
+align-items: flex-start;
+padding: 0px;
+
+width: 270px;
+height: 244px;
+
+background: #FFFFFF;
+/* black/10% */
+
+border: 1px solid rgba(0, 0, 0, 0.1);
+/* card */
+
+box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.06);
+border-radius: 12px;
+margin-left: 5px;
+margin-bottom: 5px;
+margin-right: 5px;
+margin-top: 5px;
+}
+
+.TotalPettyCashOutgoing{
+    box-sizing: border-box;
+
+/* Auto layout */
+flex: 1;
+align-items: flex-start;
+
+width: 435px;
+height: 160px;
+
+background: #FFFFFF;
+/* black/10% */
+
+border: 1px solid rgba(0, 0, 0, 0.1);
+/* card */
+
+box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.06);
+border-radius: 12px;
+
+margin-bottom: 5px;
+margin-right: 5px;
+margin-top: 5px;
+}
+.RatioOfOperatingExpenses{
+box-sizing: border-box;
+
+/* Auto layout */
+flex: 1;
+align-items: flex-start;
+padding: 0px;
+
+width: 435px;
+height: 160px;
+
+background: #FFFFFF;
+/* black/10% */
+
+border: 1px solid rgba(0, 0, 0, 0.1);
+/* card */
+
+box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.06);
+border-radius: 12px;
+margin-left: 5px;
+margin-bottom: 5px;
+margin-right: 5px;
+margin-top: 5px;
+}
+.PettyCashInAndOutStatus{
+    box-sizing: border-box;
+
+    /* Auto layout */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    
+    width: 980px;
+    height: 421px;
+    
+    background: #FFFFFF;
+    /* black/10% */
+    
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* card */
+    
+    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.06);
+    border-radius: 12px;  
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.AchievementRate{
+    box-sizing: border-box;
+
+    /* Auto layout */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    
+    width: 980px;
+    height: 321px;
+    
+    background: #FFFFFF;
+    /* black/10% */
+    
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* card */
+    
+    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.06);
+    border-radius: 12px;  
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.AchievementRateOfBusinessBody{
+    box-sizing: border-box;
+
+    /* Auto layout */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    
+    width: 980px;
+    height: 380px;
+    
+    background: #FFFFFF;
+    /* black/10% */
+    
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* card */
+    
+    box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.06);
+    border-radius: 12px;  
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+.SalesRow{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+}
+.ProductSalesRanking{
+    box-sizing: border-box;
+
+/* Auto layout */
+
+flex: 1;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 315px;
+height: 497px;
+
+background: #FFFFFF;
+/* black/10% */
+
+border: 1px solid rgba(0, 0, 0, 0.1);
+/* card */
+
+box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.06);
+border-radius: 12px;
+margin: 5px;
+}
+.CustomerSalesRanking{
+    box-sizing: border-box;
+
+/* Auto layout */
+
+flex: 1;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 315px;
+height: 497px;
+
+background: #FFFFFF;
+/* black/10% */
+
+border: 1px solid rgba(0, 0, 0, 0.1);
+/* card */
+
+box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.06);
+border-radius: 12px;
+margin: 5px;
+}
+.SalesmanSalesRanking{
+    box-sizing: border-box;
+
+/* Auto layout */
+
+flex: 1;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+
+width: 315px;
+height: 497px;
+
+background: #FFFFFF;
+/* black/10% */
+
+border: 1px solid rgba(0, 0, 0, 0.1);
+/* card */
+
+box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.06);
+border-radius: 12px;
+margin: 5px;
+}
