@@ -12,10 +12,12 @@ function CenterColumn() {
                 <h1> Overview</h1>
                 <h3> Finance</h3>
                 <div className='AccumulatedProfitAndLoss'>
-                    
+
                 </div>
                 <div className='MonthlyIncome'>
-                <img src='OV_Fi_MonthlyIncome.jpg'></img>
+                    <p>Monthly Income</p>
+                    <div className='littletitle'>yyyy/mm - yyyy/mm<span>Net Revenu</span></div>
+                    <img className='MonthlyIncomeIMG' src='./OV_Fi_MonthlyIncome.jpg' />
                 </div>
                 <div className='FinanceRow'>
                     <div className='CurrentCashProfile'>

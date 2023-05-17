@@ -122,6 +122,36 @@ function Sidebar() {
                 <Item icon={IconList.HR} LastIcon="1" text="HR"></Item>
                 <Item icon={IconList.Invoicing} LastIcon="1" text="Invoicing"></Item>
                 <Item icon={IconList.Genuine_AI} LastIcon="1" text="Genuie AI"></Item>
+                <Item icon={IconList.Overview} text="Overview"/>
+                <Item icon={IconList.Finance} LastIcon="1" text="Finance" alt="right"></Item>
+                <Item icon={IconList.Sales} LastIcon="1" text="Sales"></Item>
+                <Item icon={IconList.HR} LastIcon="1" text="HR"></Item>
+                <Item icon={IconList.Invoicing} LastIcon="1" text="Invoicing"></Item>
+                <Item icon={IconList.Genuine_AI} LastIcon="1" text="Genuie AI"></Item>
+                <Item icon={IconList.Overview} text="Overview"/>
+                <Item icon={IconList.Finance} LastIcon="1" text="Finance" alt="right"></Item>
+                <Item icon={IconList.Sales} LastIcon="1" text="Sales"></Item>
+                <Item icon={IconList.HR} LastIcon="1" text="HR"></Item>
+                <Item icon={IconList.Invoicing} LastIcon="1" text="Invoicing"></Item>
+                <Item icon={IconList.Genuine_AI} LastIcon="1" text="Genuie AI"></Item>
+                <Item icon={IconList.Overview} text="Overview"/>
+                <Item icon={IconList.Finance} LastIcon="1" text="Finance" alt="right"></Item>
+                <Item icon={IconList.Sales} LastIcon="1" text="Sales"></Item>
+                <Item icon={IconList.HR} LastIcon="1" text="HR"></Item>
+                <Item icon={IconList.Invoicing} LastIcon="1" text="Invoicing"></Item>
+                <Item icon={IconList.Genuine_AI} LastIcon="1" text="Genuie AI"></Item>
+                <Item icon={IconList.Overview} text="Overview"/>
+                <Item icon={IconList.Finance} LastIcon="1" text="Finance" alt="right"></Item>
+                <Item icon={IconList.Sales} LastIcon="1" text="Sales"></Item>
+                <Item icon={IconList.HR} LastIcon="1" text="HR"></Item>
+                <Item icon={IconList.Invoicing} LastIcon="1" text="Invoicing"></Item>
+                <Item icon={IconList.Genuine_AI} LastIcon="1" text="Genuie AI"></Item>
+                <Item icon={IconList.Overview} text="Overview"/>
+                <Item icon={IconList.Finance} LastIcon="1" text="Finance" alt="right"></Item>
+                <Item icon={IconList.Sales} LastIcon="1" text="Sales"></Item>
+                <Item icon={IconList.HR} LastIcon="1" text="HR"></Item>
+                <Item icon={IconList.Invoicing} LastIcon="1" text="Invoicing"></Item>
+                <Item icon={IconList.Genuine_AI} LastIcon="1" text="Genuie AI"></Item>
             </ItemList>
         </Base>
     )
