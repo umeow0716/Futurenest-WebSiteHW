@@ -4,17 +4,6 @@
 
 }
 
-p {
-    height: 20px;
-    line-height: 30px;
-    font-weight: bolder;
-    text-indent: 30px;
-}
-
-span {
-    text-align: right;
-}
-
 .littletitle {
     display: inline-block;
     height: 13px;

@@ -2,6 +2,7 @@ import './App.css'
 import styled from 'styled-components'
 import Sidebar from './components/Sidebar.js'
 import CenterColumn from './components/CenterColumn/CenterColumn'
+import SalesAnalysis from './components/SalesAnalysis/SalesAnalysis'
 import Notification from './Notification.svg'
 import Cloud from './Cloud.svg'
 
@@ -38,7 +39,7 @@ function App() {
             </div>
         
             <div className='context'>
-                <CenterColumn />
+                <SalesAnalysis />
             </div>
         </div>  
       </Main>
