@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Info from './SalesAnalysis/Info.svg';
 import styled from "styled-components"
 
+//灰色容器
 const Container = styled.div`
     box-sizing: border-box;
     background-color: rgba(255, 255, 255, 1);
@@ -17,6 +18,7 @@ const Container = styled.div`
     margin-top: 3vmin;
 `;
 
+//將容器上下隔開(灰色底線)
 const Box = styled.div`
     padding-left: 3vmin;
     padding-right: 3vmin;
@@ -33,6 +35,7 @@ const Box = styled.div`
     flex-wrap: wrap;
 `
 
+//容器標題及Info按鈕CSS (放Box裡面)
 const Title = styled.p`
     width: 100%;
     font-size: 18px;
@@ -40,7 +43,7 @@ const Title = styled.p`
     word-wrap: break-word;
     justify-content: space-between;
 `
-
+//表格中的項目列表CSS (放Box裡面)
 const DotRow = styled.div`
     width: 100%;
     display: inline-flex;
@@ -52,12 +55,14 @@ const DotRow = styled.div`
     margin-bottom: 2vmin;
 `
 
+//項目點點CSS (放DotRow裡面)
 const Dot = styled.div`
     width: 8px;
     height: 8px;
     border-radius: 100%; 
 `
 
+//將內容強制設定不換行
 const Inline = styled.span`
     display: inline-flex;
     flex-direction: row;
@@ -90,21 +95,30 @@ const EmbedList = styled.span`
     flex-direction: row;
 `
 
-function CustomContainer(DotList = [], CustomImg = <img alt="" />) {
+function CustomContainer(DotList = [], CustomImg = <img alt="" />, maxWidth = "auto") {
     return class Object extends Component {
         constructor(props) {
             super(props);
             this.props = props;
         }
-    
+        
+        Title = styled.p`
+            max-width: ${maxWidth};
+            width: 100%;
+            font-size: 18px;
+            display: flex;
+            word-wrap: break-word;
+            justify-content: space-between;
+        `
+
         render() {
             return (
                 <Container>
                     <Box>
-                        <Title>
+                        <this.Title>
                             {this.props.Title}
                             <img src={Info} alt="Info" />
-                        </Title>
+                        </this.Title>
                         <DotRow>
                             {
                                 DotList.map(x => 

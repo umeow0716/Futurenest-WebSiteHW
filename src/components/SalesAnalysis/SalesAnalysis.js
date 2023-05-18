@@ -14,7 +14,8 @@ function App() {
             max-width: 23vw;
             padding-right: 0.65vw;
             padding-left: 0.65vw;
-        `
+        `,
+        "23vw"
     )
 
     const CommodityPerformance = Embed.CustomContainer(
@@ -28,7 +29,8 @@ function App() {
             max-width: 23vw;
             padding-right: 0.65vw;
             padding-left: 0.65vw;
-        `
+        `,
+        "23vw"
     )
 
     return (
