@@ -1,5 +1,6 @@
 import styled from "styled-components"
 
+//頁面標題
 const PageTitle = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -18,6 +19,7 @@ const PageTitle = styled.div`
     }
 `
 
+//頁面標題附註(灰色小字)
 const Description = styled.h6`
     font-size: 16px;
     font-family: 'Inter';
@@ -30,6 +32,7 @@ const Description = styled.h6`
     margin-block-end: 1.8em;
 `
 
+//段落標題(ex. Overview)
 const PortTitle = styled.h5`
     padding-left: 3vmin;
     text-align: start;
@@ -38,6 +41,7 @@ const PortTitle = styled.h5`
     margin-block-end: 0em;
 `
 
+//頁面標題(使用範例: <CustomPageTitle title="this is title" description="this is description"/>)
 const CustomPageTitle = (props) => {
     return (
         <PageTitle>
@@ -47,6 +51,7 @@ const CustomPageTitle = (props) => {
     )
 }
 
+//段落標題(使用範例: <CustomPortTitle text="this is port title"/>)
 const CustomPortTitle = (props) => {
     return (
         <PortTitle>
@@ -55,6 +60,7 @@ const CustomPortTitle = (props) => {
     )
 }
 
+//結尾區塊CSS
 const Footer = styled.span`
     display: flex;
     flex-direction: row;
@@ -68,6 +74,8 @@ const Footer = styled.span`
     justify-content: space-between;
     align-items: center;
 `
+
+//結尾超連結
 const Footer_Url = styled.a`
     herf: "/";
     color: rgba(25, 132, 177, 0.8);
@@ -75,6 +83,8 @@ const Footer_Url = styled.a`
     margin-left: 1vmin;
 `
 
+//結尾懶人包(使用範例: <Footer_completed />)
+//內容都已刻上去
 const Footer_completed = () => (
     <Footer>
         <span>
