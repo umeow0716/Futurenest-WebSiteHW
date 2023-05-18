@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Info from './SalesAnalysis/Info.svg';
+import Info from './Sales/Info.svg';
 import styled from "styled-components"
 
 //灰色容器
