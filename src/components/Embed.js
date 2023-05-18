@@ -3,16 +3,18 @@ import Info from './SalesAnalysis/Info.svg';
 import styled from "styled-components"
 
 const Container = styled.div`
-        box-sizing: border-box;
-        background-color: rgba(255, 255, 255, 1);
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.06);
-        border-radius: 12px;
-        margin: 1vmin;
-        width: max-content;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    margin: 1vmin;
+    width: max-content;
+    margin-bottom: 5vmin;
+    margin-top: 3vmin;
 `;
 
 const Box = styled.div`
@@ -35,6 +37,7 @@ const Title = styled.p`
     width: 100%;
     font-size: 18px;
     display: flex;
+    word-wrap: break-word;
     justify-content: space-between;
 `
 
