@@ -82,6 +82,13 @@ const Inline = styled.span`
     align-items: center;
 `
 
+const InfoButton = styled.a`
+    display: flex;
+    border: none;
+    background-color: transparent;
+    padding-left: 1vmin;
+`
+
 class DotObject extends Component {
     constructor(props) {
         super(props);
@@ -127,7 +134,7 @@ function CustomContainer(DotList = [], CustomImg = <img alt="" />, maxWidth = "a
             text-overflow: ellipsis;
             justify-content: flex-start;
 
-            & img {
+            & a {
                 margin-left: auto;
             }
         `
@@ -139,7 +146,7 @@ function CustomContainer(DotList = [], CustomImg = <img alt="" />, maxWidth = "a
                         <this.Title>
                             {this.props.Title}
                             {description ? <Description>{description}</Description> : ""}
-                            <img src={Info} alt="Info" />
+                            <InfoButton href='#'><img src={Info} alt="Info" /></InfoButton>
                         </this.Title>
                         {
                             DotList.length ?
