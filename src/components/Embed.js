@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Info from './Sales/Info.svg';
+import React, { Component } from 'react'
+import Info from './Sales/Info.svg'
 import styled from "styled-components"
 
 //灰色容器
@@ -14,6 +14,7 @@ const Container = styled.div`
     border-radius: 12px;
     margin: 1vmin;
     width: max-content;
+    height: max-content;
     margin-bottom: 5vmin;
     margin-top: 3vmin;
 `;
@@ -40,9 +41,21 @@ const Title = styled.p`
     width: 100%;
     font-size: 18px;
     display: flex;
+    flex-direction: row;
     word-wrap: break-word;
-    justify-content: space-between;
 `
+const Description = styled.h6`
+    font-size: 16px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.4);
+    padding-left: 0.5vmin;
+
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+`
+
 //表格中的項目列表CSS (放Box裡面)
 const DotRow = styled.div`
     width: 100%;
@@ -93,9 +106,10 @@ class DotObject extends Component {
 const EmbedList = styled.span`
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 `
 
-function CustomContainer(DotList = [], CustomImg = <img alt="" />, maxWidth = "auto") {
+function CustomContainer(DotList = [], CustomImg = <img alt="" />, maxWidth = "auto", description="", CustomContent="") {
     return class Object extends Component {
         constructor(props) {
             super(props);
@@ -107,8 +121,15 @@ function CustomContainer(DotList = [], CustomImg = <img alt="" />, maxWidth = "a
             width: 100%;
             font-size: 18px;
             display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
             word-wrap: break-word;
-            justify-content: space-between;
+            text-overflow: ellipsis;
+            justify-content: flex-start;
+
+            & img {
+                margin-left: auto;
+            }
         `
 
         render() {
@@ -117,17 +138,24 @@ function CustomContainer(DotList = [], CustomImg = <img alt="" />, maxWidth = "a
                     <Box>
                         <this.Title>
                             {this.props.Title}
+                            {description ? <Description>{description}</Description> : ""}
                             <img src={Info} alt="Info" />
                         </this.Title>
-                        <DotRow>
-                            {
-                                DotList.map(x => 
-                                    <Inline><DotObject color={x.color}/>{x.text}</Inline>
-                                )
-                            }
-                        </DotRow>
+                        {
+                            DotList.length ?
+                            <DotRow>
+                                {
+                                    DotList.map(x => 
+                                        <Inline><DotObject color={x.color}/>{x.text}</Inline>
+                                    )
+                                }
+                            </DotRow> :
+                            ""
+                        }
                     </Box>
-                    <CustomImg src={this.props.src} alt={this.props.alt || "Image"} />
+                    {this.props.children}
+                    {this.props.CustomContent || ""}
+                    {this.props.src ? <CustomImg src={this.props.src} alt={this.props.alt || "Image"} /> : "" }
                 </Container>
             )
         }
