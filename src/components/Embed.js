@@ -17,6 +17,14 @@ const Container = styled.div`
     height: max-content;
     margin-bottom: 5vmin;
     margin-top: 3vmin;
+
+    transform: scale(1,1);
+    transition: all 200ms ease-out;
+
+    &:hover {
+        transform:scale(1.06, 1.06);
+        z-index: 97;
+    }
 `;
 
 //將容器上下隔開(灰色底線)
@@ -80,6 +88,7 @@ const Inline = styled.span`
     display: inline-flex;
     flex-direction: row;
     align-items: center;
+    margin-left: 1.5vmin;
 `
 
 const InfoButton = styled.a`
