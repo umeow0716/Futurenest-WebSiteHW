@@ -1,15 +1,15 @@
-import './App.css'
-import styled from 'styled-components'
-import Sidebar from './components/Sidebar.js'
-import CenterColumn from './components/CenterColumn/CenterColumn'
-import SalesAnalysis from './components/Sales/ProductSales'
-import BusinessAnalysis from './components/Sales/BusinessAnalysis'
-import Notification from './Notification.svg'
-import Cloud from './Cloud.svg'
+import "./App.css";
+import styled from "styled-components";
+import Sidebar from "./components/Sidebar.js";
+import CenterColumn from "./components/CenterColumn/CenterColumn";
+import SalesAnalysis from "./components/Sales/ProductSales";
+import BusinessAnalysis from "./components/Sales/BusinessAnalysis";
+import Notification from "./Notification.svg";
+import Cloud from "./Cloud.svg";
 
 const Main = styled.div`
   text-align: center;
-  background-color: #F9F9F9;
+  background-color: #f9f9f9;
   display: flex;
   flex-direction: row;
   font-size: calc(10px + 2vmin);
@@ -29,21 +29,21 @@ const Avatar = styled.img`
 
 function App() {
   return (
-      <Main>
-        <Sidebar />
-        <div className='CenterColumn'>
-            <div className='top'>
-              <img src={Cloud} alt="Cloud" />
-              <img src={Notification} alt="Notification" />
-              <Avatar src="/avatar.jpg" alt='Avatar' />
-              Johnson Finch
-            </div>
-        
-            <div className='context'>
-                <BusinessAnalysis />
-            </div>
-        </div>  
-      </Main>
+    <Main>
+      <Sidebar />
+      <div className="CenterColumn">
+        <div className="top">
+          <img src={Cloud} alt="Cloud" />
+          <img src={Notification} alt="Notification" />
+          <Avatar src="/avatar.jpg" alt="Avatar" />
+          Johnson Finch
+        </div>
+
+        <div className="context">
+          <BusinessAnalysis />
+        </div>
+      </div>
+    </Main>
   );
 }
 
