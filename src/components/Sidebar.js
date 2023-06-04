@@ -25,22 +25,15 @@ const Image = styled.img`
     padding-bottom: 2vh;
 `;
 
-class ItemTitle extends Component {
-    constructor(props) {
-        super(props);
-        this.props = props;
+const ItemTitle = (props) => {
+    const [data, SetData] = useState(props.data);
+    const [icon, SetIcon] = useState("right" ? <Buttons.right /> : <Buttons.down />);
 
-        this.state = {
-            data: this.props.data,
-            icon: this.props.data === "right" ? <Buttons.right /> : <Buttons.down />
-        }
-    }
-
-    Object = styled.button`
+    let Object = styled.button`
         display: flex;
         
         border: none;
-        background-color:transparent;
+        background-color: ${props.BGColor};
         border-radius: 10px;
         height: 6vmin;
         width: 90%;
@@ -50,15 +43,15 @@ class ItemTitle extends Component {
         padding: 1vmin;
         margin: 3vmin 2vmin 0vmin 2vmin;
         
-        color: #999999;
+        color: ${props.TextColor};
         transition: background-color 200ms, color 200ms, fill 500ms ease-out 30ms;
         
         & path {
-            fill: #999999
+            fill: ${props.FillColor};
         }
 
         &:hover {
-            background-color: #F2F2F2;
+            background-color: ${props.HoverBGColor};
             color: rgba(0, 0, 0, 0.8);
         }
 
@@ -67,41 +60,35 @@ class ItemTitle extends Component {
         }
     `;
 
-    TextBox = styled.b`
+    let TextBox = styled.b`
         font-family: Inter;
         font-size: 19px;
         padding: 1vmin;
     `;
 
-    LastIcon = styled.div`
+    let LastIcon = styled.div`
         display: flex;
         margin-left: auto;
     `;
     
-    change = () => {
-        if (this.state.data === "right") {
-            this.setState({
-                data: "down",
-                icon: <Buttons.down />
-            });
+    let change = () => {
+        if (data === "right") {
+            SetData("down");
+            SetIcon(<Buttons.down />);
         }
         else {
-            this.setState({
-                data: "right",
-                icon: <Buttons.right />
-            });
+            SetData("right");
+            SetIcon(<Buttons.right />);
         }
     }
 
-    render() {
-        return (
-            <this.Object onClick={this.change}>
-                <this.props.icon alt="icon" />
-                <this.TextBox>{this.props.text}</this.TextBox>
-                {this.props.LastIcon && this.props.LastIcon !== "0" ? (<this.LastIcon>{this.state.icon}</this.LastIcon>) : ""}
-            </this.Object>
-        )
-    }
+    return (
+        <Object onClick={change}>
+            <props.icon alt="icon" />
+            <TextBox>{props.text}</TextBox>
+            {props.LastIcon && props.LastIcon !== "0" ? (<LastIcon>{icon}</LastIcon>) : ""}
+        </Object>
+    )
 }
 
 const ItemList = (props) => {
@@ -194,11 +181,12 @@ const Element = (props) => {
 
     let refresh = (detail) => {
         if(!detail) return;
-        SetTextColor(detail === props?.to ? `rgba(255, 255, 255, 1)` : `rgba(0, 0, 0, 0.4)`);
-        SetBGColor(detail === props?.to ? `rgba(0, 0, 0, 0.8)` : `rgba(255, 255, 255, 1)`);
+        let flag = detail === props?.to;
+        SetTextColor(flag ? `rgba(255, 255, 255, 1)` : `rgba(0, 0, 0, 0.4)`);
+        SetBGColor(flag ? `rgba(0, 0, 0, 0.8)` : `rgba(255, 255, 255, 1)`);
 
-        SetHoverColor(detail === props?.to ? `rgba(255, 255, 255, 1)` : `rgba(28, 28, 28, 1)`);
-        SetHoverBGColor(detail === props?.to ? `rgba(0, 0, 0, 0.8)` : `rgba(0, 0, 0, 0.05)`);
+        SetHoverColor(flag ? `rgba(255, 255, 255, 1)` : `rgba(28, 28, 28, 1)`);
+        SetHoverBGColor(flag ? `rgba(0, 0, 0, 0.8)` : `rgba(0, 0, 0, 0.05)`);
     }
     
     let TextBase = styled.div`
@@ -235,35 +223,43 @@ const Element = (props) => {
 
 const Item = (props) => {
     let children_path = props?.children?.map(element => element?.props?.to)?.filter(x => x);
-    
-    let none = styled.span`
-        & a {
-            display: none;
-        }
-    `;
-
-    let display = styled.span`
-        & a {
-            display: block;
-        }
-    `;
 
     const [ open, SetOpen ] = useState(children_path?.includes(document.location.pathname));
-    const [ child, setChild ] = useState(props.children);
+    
+    let flag = (document.location.pathname === props?.to || children_path?.includes(document.location.pathname)) 
+    const [TextColor, SetTextColor] = useState(flag ? `rgba(28, 28, 28, 1)` : `rgba(0, 0, 0, 0.4)`);
+    const [BGColor, SetBGColor] = useState(flag ? `rgba(147, 240, 240, 0.4)` : `rgba(255, 255, 255, 1)`);
+    const [HoverBGColor, SetHoverBGColor] = useState(flag ? `rgba(147, 240, 240, 0.4)` : `rgba(0, 0, 0, 0.05)`);
+    const [FillColor, SetFillColor] = useState(flag ? `rgba(28, 28, 28, 1)` : `rgba(0, 0, 0, 0.3)`);
 
-    let change = () => SetOpen(!open);
+    let change = () => {
+        SetOpen(!open);
+
+        let event = new CustomEvent("StateUpdate", { detail: props?.to });
+        document.dispatchEvent(event);
+    }
+
+    const refersh = (detail) => {
+        if(!detail) return;
+        let flag = (detail === props?.to || children_path?.includes(detail));
+        console.log(detail)
+
+        SetTextColor(flag ? `rgba(28, 28, 28, 1)` : `rgba(0, 0, 0, 0.4)`);
+        SetBGColor(flag ? `rgba(147, 240, 240, 0.4)` : `rgba(255, 255, 255, 1)`);
+        SetHoverBGColor(flag ? `rgba(147, 240, 240, 0.4)` : `rgba(0, 0, 0, 0.05)`);
+        SetFillColor(flag ? `rgba(28, 28, 28, 1)` : `rgba(0, 0, 0, 0.3)`)
+    }
     
     useEffect(() => {
-        document.addEventListener("StateUpdate", () => {
-            setChild(null);
-            setChild(props.children)
+        document.addEventListener("StateUpdate", (event) => {
+            refersh(event.detail);
         });
-    })
+    });
 
     return (
         <Link to={props.to} style={{ textDecoration: 'none' }}>
-            <span onClick={change}><ItemTitle icon={props.icon} text={props.text} LastIcon={props.LastIcon} data={ open ? "down" : "right" } /></span>
-            {open ? child : ""}
+            <span onClick={change}><ItemTitle icon={props.icon} text={props.text} LastIcon={props.LastIcon} data={ open ? "down" : "right" } TextColor={TextColor} BGColor={BGColor} HoverBGColor={HoverBGColor} FillColor={FillColor} /></span>
+            {open ? props.children : ""}
         </Link>
     )
 }
