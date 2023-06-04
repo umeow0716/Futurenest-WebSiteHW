@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
 import styled from 'styled-components'
@@ -25,54 +25,14 @@ const Image = styled.img`
     padding-bottom: 2vh;
 `;
 
-const ItemList = styled.div`
-    overflow: auto;
-    overflow-x: overlay;
-    overflow-y: overlay;
-    
-    height: 100%;
-    width: 100%;
-    flex-direction: column;
-
-    &:before {
-        height: 500px;
-        content:"";
-    }
-
-    &::-webkit-scrollbar {
-        display: flex;
-        width: 7px;
-        height: 10px;
-    }
-
-    &::-webkit-scrollbar-button {
-        background: transparent;
-        border-radius: 4px;
-    }
-
-    &::-webkit-scrollbar-track-piece {
-        background: transparent;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        border-radius: 4px;
-        background-color: rgba(0, 0, 0, 0.4);
-        border: none;
-    }
-
-    &::-webkit-scrollbar-track {
-        box-shadow: transparent;
-    }
-`;
-
 class ItemTitle extends Component {
     constructor(props) {
         super(props);
         this.props = props;
 
         this.state = {
-            data: "right",
-            icon: <Buttons.right />
+            data: this.props.data,
+            icon: this.props.data === "right" ? <Buttons.right /> : <Buttons.down />
         }
     }
 
@@ -117,6 +77,7 @@ class ItemTitle extends Component {
         display: flex;
         margin-left: auto;
     `;
+    
     change = () => {
         if (this.state.data === "right") {
             this.setState({
@@ -143,35 +104,104 @@ class ItemTitle extends Component {
     }
 }
 
-class Element extends Component {
-    constructor(props) {
-        super(props);
-        this.props = props;
+const ItemList = (props) => {
+    let ItemListObject = styled.div`
+        overflow: auto;
+        overflow-x: overlay;
+        overflow-y: overlay;
+
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+
+        &:before {
+            height: 500px;
+            content:"";
+        }
+
+        &::-webkit-scrollbar {
+            display: flex;
+            width: 7px;
+            height: 10px;
+        }
+
+        &::-webkit-scrollbar-button {
+            background: transparent;
+            border-radius: 4px;
+        }
+
+        &::-webkit-scrollbar-track-piece {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.4);
+            border: none;
+        }
+
+        &::-webkit-scrollbar-track {
+            box-shadow: transparent;
+        }
+    `
+
+    return (
+        <ItemListObject>
+            { props.children }
+        </ItemListObject>
+    )
+}
+
+const Element = (props) => {
+    const [TextColor, SetTextColor] = useState(document.location.pathname === props?.to ? `rgba(255, 255, 255, 1)` : `rgba(0, 0, 0, 0.4)`);
+    const [BGColor, SetBGColor] = useState(document.location.pathname === props?.to ? `rgba(0, 0, 0, 0.8)` : `rgba(255, 255, 255, 1)`);
+
+    const [HoverColor, SetHoverColor] = useState(document.location.pathname === props?.to ? `rgba(255, 255, 255, 1)` : `rgba(28, 28, 28, 1)`);
+    const [HoverBGColor, SetHoverBGColor] = useState(document.location.pathname === props?.to ? `rgba(0, 0, 0, 0.8)` : `rgba(0, 0, 0, 0.05)`);
+
+    let Base = (props) => {
+        let Style = styled.a`
+            font-family: 'Noto Sans TC';
+            display: flex;
+            font-size: 13px;
+            color: rgba(0, 0, 0, 0.4);
+
+            width: 90%;
+            margin: 1vh 0vmin 2vmin 2vmin;
+
+            padding-top: 0.5vh;
+            padding-bottom: 0.5vh;
+            border-radius: 12px;
+        
+            transition: background-color 200ms, color 150ms ease-out 30ms;
+            text-align: start;
+
+            color: ${props.TextColor};
+            background-color: ${props.BGColor};
+
+            &:hover {
+                background-color: ${props.HoverBGColor};
+                color: ${props.HoverColor};
+            }
+        `;
+
+        return (
+            <Style>
+                {props.children}
+            </Style>
+        )
     }
 
-    Base = styled.a`
-        font-family: 'Noto Sans TC';
-        display: flex;
-        font-size: 13px;
-        color: rgba(0, 0, 0, 0.4);
+    let refresh = (detail) => {
+        if(!detail) return;
+        SetTextColor(detail === props?.to ? `rgba(255, 255, 255, 1)` : `rgba(0, 0, 0, 0.4)`);
+        SetBGColor(detail === props?.to ? `rgba(0, 0, 0, 0.8)` : `rgba(255, 255, 255, 1)`);
 
-        width: 90%;
-        margin: 1vh 0vmin 2vmin 2vmin;
-
-        padding-top: 0.5vh;
-        padding-bottom: 0.5vh;
-        border-radius: 12px;
-        
-        transition: background-color 200ms, color 150ms ease-out 30ms;
-        text-align: start;
-
-        &:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: rgba(255, 255, 255, 1);
-        }
-    `;
+        SetHoverColor(detail === props?.to ? `rgba(255, 255, 255, 1)` : `rgba(28, 28, 28, 1)`);
+        SetHoverBGColor(detail === props?.to ? `rgba(0, 0, 0, 0.8)` : `rgba(0, 0, 0, 0.05)`);
+    }
     
-    TextBase = styled.div`
+    let TextBase = styled.div`
         width: auto;
         height: auto;
 
@@ -181,56 +211,61 @@ class Element extends Component {
         text-decoration: none;
     `
 
-    render() {
-        return (
-            <Link to={this.props.to} style={{ textDecoration: 'none' }} >
-                <this.Base>
-                    <this.TextBase>
-                        {this.props.text}
-                    </this.TextBase>
-                </this.Base>
-            </Link>
-        )
+    let StateUpdate = () => {
+        let event = new CustomEvent("StateUpdate", { detail: props?.to });
+        document.dispatchEvent(event);
     }
+
+    useEffect(() => {
+        document.addEventListener("StateUpdate", (event) => {
+            refresh(event?.detail);
+        });
+    });
+
+    return (
+        <Link to={props.to} style={{ textDecoration: 'none' }} onClick={StateUpdate}>
+            <Base TextColor={TextColor} BGColor={BGColor} HoverColor={HoverColor} HoverBGColor={HoverBGColor}>
+                <TextBase>
+                    {props.text}
+                </TextBase>
+            </Base>
+        </Link>
+    )
 }
 
-class Item extends Component {
-    constructor(props) {
-        super(props);
-        this.props = props;
-
-        this.state = {
-            open: false,
-            jsx: this.none
-        }
-    }
-
-    display = styled.span`
-        & a {
-            display: block;
-        }
-    `;
-
-    none = styled.span`
+const Item = (props) => {
+    let children_path = props?.children?.map(element => element?.props?.to)?.filter(x => x);
+    
+    let none = styled.span`
         & a {
             display: none;
         }
     `;
 
-    change = () => {
-        this.setState({
-            open: !this.state.open
-        });
-    }
+    let display = styled.span`
+        & a {
+            display: block;
+        }
+    `;
 
-    render() {
-        return (
-            <Link to={this.props.to} style={{ textDecoration: 'none' }} >
-                <span onClick={this.change}><ItemTitle icon={this.props.icon} text={this.props.text} LastIcon={this.props.LastIcon} /></span>
-                {this.state.open ? this.props.children : ""}
-            </Link>
-        )
-    }
+    const [ open, SetOpen ] = useState(children_path?.includes(document.location.pathname));
+    const [ child, setChild ] = useState(props.children);
+
+    let change = () => SetOpen(!open);
+    
+    useEffect(() => {
+        document.addEventListener("StateUpdate", () => {
+            setChild(null);
+            setChild(props.children)
+        });
+    })
+
+    return (
+        <Link to={props.to} style={{ textDecoration: 'none' }}>
+            <span onClick={change}><ItemTitle icon={props.icon} text={props.text} LastIcon={props.LastIcon} data={ open ? "down" : "right" } /></span>
+            {open ? child : ""}
+        </Link>
+    )
 }
 
 function Sidebar() {

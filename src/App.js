@@ -8,6 +8,7 @@ import ProductSales from "./components/Sales/ProductSales";
 import BusinessAnalysis from "./components/Sales/BusinessAnalysis";
 import Notification from "./Notification.svg";
 import Cloud from "./Cloud.svg";
+import { useEffect } from "react";
 
 const Main = styled.div`
   text-align: center;
