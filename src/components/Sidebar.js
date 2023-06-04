@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 import styled from 'styled-components'
 import icon from './icon.svg'
@@ -148,7 +149,7 @@ class Element extends Component {
         this.props = props;
     }
 
-    Base = styled.div`
+    Base = styled.a`
         font-family: 'Noto Sans TC';
         display: flex;
         font-size: 13px;
@@ -176,15 +177,19 @@ class Element extends Component {
 
         padding-left: 5vmin;
         white-space: nowrap;
+
+        text-decoration: none;
     `
 
     render() {
         return (
-            <this.Base>
-                <this.TextBase>
-                    {this.props.text}
-                </this.TextBase>
-            </this.Base>
+            <Link to={this.props.to} style={{ textDecoration: 'none' }} >
+                <this.Base>
+                    <this.TextBase>
+                        {this.props.text}
+                    </this.TextBase>
+                </this.Base>
+            </Link>
         )
     }
 }
@@ -220,10 +225,10 @@ class Item extends Component {
 
     render() {
         return (
-            <span>
+            <Link to={this.props.to} style={{ textDecoration: 'none' }} >
                 <span onClick={this.change}><ItemTitle icon={this.props.icon} text={this.props.text} LastIcon={this.props.LastIcon} /></span>
                 {this.state.open ? this.props.children : ""}
-            </span>
+            </Link>
         )
     }
 }
@@ -233,7 +238,7 @@ function Sidebar() {
         <Base>
             <Image src={icon} alt="logo" />
             <ItemList>
-                <Item icon={IconList.Overview} text="Overview" LastIcon="0"></Item>
+                <Item icon={IconList.Overview} text="Overview" LastIcon="0" to="/Overview" />
                 <Item icon={IconList.Finance} text="Finance" LastIcon="1">
                     <Element text="Profit And Loss" />
                     <Element text="Cash Flow Analysis" />
@@ -243,8 +248,8 @@ function Sidebar() {
                     <Element text="Petty Cash In & Out" />
                 </Item>
                 <Item icon={IconList.Sales} text="Sales" LastIcon="1">
-                    <Element text="Product Sales" />
-                    <Element text="Business Analysis" />
+                    <Element text="Product Sales" to="/ProductSales" />
+                    <Element text="Business Analysis" to="/BusinessAnalysis" />
                 </Item>
                 <Item icon={IconList.HR} text="HR" LastIcon="1">
                     <Element text="Salary List" />

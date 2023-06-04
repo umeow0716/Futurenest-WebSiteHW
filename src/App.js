@@ -1,8 +1,10 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import "./App.css";
 import styled from "styled-components";
 import Sidebar from "./components/Sidebar.js";
-import CenterColumn from "./components/CenterColumn/CenterColumn";
-import SalesAnalysis from "./components/Sales/ProductSales";
+import Overview from "./components/CenterColumn/CenterColumn";
+import ProductSales from "./components/Sales/ProductSales";
 import BusinessAnalysis from "./components/Sales/BusinessAnalysis";
 import Notification from "./Notification.svg";
 import Cloud from "./Cloud.svg";
@@ -30,6 +32,7 @@ const Avatar = styled.img`
 function App() {
   return (
     <Main>
+      <Router>
       <Sidebar />
       <div className="CenterColumn">
         <div className="top">
@@ -40,9 +43,14 @@ function App() {
         </div>
 
         <div className="context">
-          <BusinessAnalysis />
+          <Routes>
+            <Route path="/Overview" element={<Overview />} />
+            <Route path="/ProductSales" element={<ProductSales />} />
+            <Route path="/BusinessAnalysis" element={<BusinessAnalysis />} />
+          </Routes>
         </div>
       </div>
+      </Router>
     </Main>
   );
 }
