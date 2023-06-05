@@ -6,22 +6,7 @@ import Page from "../Page";
 function App() {
   const Estimated = Embed.CustomContainer(
     [{ text: "Estimated transaction amount", color: "#12939A" }],
-    styled.img`
-      max-width: 34.2vw;
-      padding-right: 0.65vw;
-      padding-left: 0.65vw;
-    `,
-    "34.2vw"
-  );
-
-  const Cases = Embed.CustomContainer(
-    [{ text: "Cases", color: "#12939A" }],
-    styled.img`
-      max-width: 34.2vw;
-      padding-right: 0.65vw;
-      padding-left: 0.65vw;
-    `,
-    "34.2vw"
+    "36.3vw"
   );
 
   const AchievementRate = Embed.CustomContainer(
@@ -29,26 +14,16 @@ function App() {
       { text: "Project Revenue", color: "#12939A" },
       { text: "Project Cost", color: "rgba(239, 93, 40, 0.4)" },
     ],
-    styled.img`
-      max-width: 73.5vw;
-      padding-right: 0.65vw;
-      padding-left: 0.65vw;
-    `,
     "73.5vw"
   );
 
   const SalesRank = Embed.CustomContainer(
     [],
-    styled.img`
-      max-width: 89vw;
-      padding-right: 0.65vw;
-      padding-left: 0.65vw;
-    `,
-    "80vw",
+    "73.5vw",
     "yyyy/mm/dd"
   );
 
-  const Card = Embed.CustomContainer([], <img />, "15.2vw");
+  const Card = Embed.CustomContainer([], "17.7vw");
 
   const CardList = styled.span`
     display: flex;
@@ -325,7 +300,7 @@ function App() {
           src="https://i.imgur.com/V8WYNKP.png"
         />
       </CardList>
-      <Page.Footer_completed />
+      <Page.FooterCompleted />
     </span>
   );
 }

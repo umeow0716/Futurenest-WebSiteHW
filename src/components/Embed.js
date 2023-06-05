@@ -132,7 +132,7 @@ const EmbedList = styled.span`
     flex-wrap: wrap;
 `
 
-function CustomContainer(DotList = [], CustomImg = <img alt="" />, maxWidth = "auto", description="", CustomContent="") {
+function CustomContainer(DotList = [], maxWidth = "auto", description="", CustomContent="") {
     return class Object extends Component {
         constructor(props) {
             super(props);
@@ -154,9 +154,14 @@ function CustomContainer(DotList = [], CustomImg = <img alt="" />, maxWidth = "a
             }
         `
 
+        Img = styled.img`
+            max-width: 100%;
+            margin-bottom: 3vmin;
+        `;
+
         render() {
             return (
-                <Container maxWidth={ this.props.maxWidth }>
+                <Container maxWidth={ maxWidth }>
                     <Box>
                         <this.Title>
                             {this.props.Title}
@@ -177,7 +182,7 @@ function CustomContainer(DotList = [], CustomImg = <img alt="" />, maxWidth = "a
                     </Box>
                     {this.props.children}
                     {this.props.CustomContent || ""}
-                    {this.props.src ? <CustomImg src={this.props.src} alt={this.props.alt || "Image"} /> : "" }
+                    {this.props.src ? <this.Img src={this.props.src} alt={this.props.alt || "Image"} /> : "" }
                 </Container>
             )
         }

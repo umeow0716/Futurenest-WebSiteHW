@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Page from "../Page"
 import Embed from "../Embed"
 
-const FirstEmbed = Embed.CustomContainer([], <img alt="icon"/>)
+const FirstEmbed = Embed.CustomContainer([])
 const SecondEmbed = Embed.CustomContainer([
     {
         color: `rgba(18, 147, 154, 1)`,
@@ -17,7 +17,7 @@ const SecondEmbed = Embed.CustomContainer([
         color: `rgba(25, 132, 177, 0.8)`,
         text: "account balance"
     }
-], <img alt="icon"/>, "68vw", "yyyy/mm - yyyy/mm")
+], "68vw", "yyyy/mm - yyyy/mm")
 
 const EmbedList = styled.div`
     display: flex;

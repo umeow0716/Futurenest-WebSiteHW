@@ -76,24 +76,24 @@ const Footer = styled.span`
 `
 
 //結尾超連結
-const Footer_Url = styled.a`
+const FooterUrl = styled.a`
     herf: "/";
     color: rgba(25, 132, 177, 0.8);
     margin-right: 1vmin;
     margin-left: 1vmin;
 `
 
-//結尾懶人包(使用範例: <Footer_completed />)
+//結尾懶人包(使用範例: <FooterCompleted />)
 //內容都已刻上去
-const Footer_completed = () => (
+const FooterCompleted = () => (
     <Footer>
         <span>
             Copyright © 2020-2023
-            <Footer_Url href="#">Globex Corporation</Footer_Url>
+            <FooterUrl href="#">Globex Corporation</FooterUrl>
         </span>
         <span>
-            <Footer_Url href="#">About Us</Footer_Url>
-            <Footer_Url href="#">Contact Us</Footer_Url>
+            <FooterUrl href="#">About Us</FooterUrl>
+            <FooterUrl href="#">Contact Us</FooterUrl>
         </span>
     </Footer>
 )
@@ -103,8 +103,8 @@ const ObjectList = {
     Description,
     PortTitle,
     Footer,
-    Footer_Url,
-    Footer_completed,
+    FooterUrl,
+    FooterCompleted,
     CustomPageTitle,
     CustomPortTitle
 }

@@ -1,4 +1,3 @@
-import styled from "styled-components"
 import Embed from '../Embed'
 import Page from '../Page'
 
@@ -10,12 +9,7 @@ function App() {
                 color: `rgba(18, 147, 154, 1)`
             }
         ],
-        styled.img`
-            max-width: 23vw;
-            padding-right: 0.65vw;
-            padding-left: 0.65vw;
-        `,
-        "23vw"
+        "24.5vw"
     )
 
     const CommodityPerformance = Embed.CustomContainer(
@@ -25,12 +19,7 @@ function App() {
                 color: `rgba(18, 147, 154, 1)`
             }
         ],
-        styled.img`
-            max-width: 23vw;
-            padding-right: 0.65vw;
-            padding-left: 0.65vw;
-        `,
-        "23vw"
+        "24.5vw"
     )
 
     return (
@@ -52,7 +41,7 @@ function App() {
                 <CommodityPerformance Title="Commodity Platform Performance" src="https://i.imgur.com/7kbb9JE.png" alt="Analysis" />
             </Embed.EmbedList>
 
-            <Page.Footer_completed />
+            <Page.FooterCompleted />
         </span>
     )
 }
