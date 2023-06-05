@@ -3,7 +3,7 @@ import Info from './Sales/Info.svg'
 import styled from "styled-components"
 
 //灰色容器
-const Container = styled.div`
+const Container = (props) => styled.div`
     box-sizing: border-box;
     background-color: rgba(255, 255, 255, 1);
     display: flex;
@@ -14,6 +14,7 @@ const Container = styled.div`
     border-radius: 12px;
     margin: 1vmin;
     width: max-content;
+    max-width: ${props.maxWidth};
     height: max-content;
     margin-bottom: 5vmin;
     margin-top: 3vmin;
@@ -133,7 +134,6 @@ function CustomContainer(DotList = [], CustomImg = <img alt="" />, maxWidth = "a
         }
         
         Title = styled.p`
-            max-width: ${maxWidth};
             width: 100%;
             font-size: 18px;
             display: flex;
@@ -150,7 +150,7 @@ function CustomContainer(DotList = [], CustomImg = <img alt="" />, maxWidth = "a
 
         render() {
             return (
-                <Container>
+                <Container maxWidth={ this.props.maxWidth }>
                     <Box>
                         <this.Title>
                             {this.props.Title}
