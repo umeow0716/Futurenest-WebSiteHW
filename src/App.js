@@ -8,7 +8,6 @@ import ProductSales from "./components/Sales/ProductSales";
 import BusinessAnalysis from "./components/Sales/BusinessAnalysis";
 import Notification from "./Notification.svg";
 import Cloud from "./Cloud.svg";
-import { useEffect } from "react";
 
 const Main = styled.div`
   text-align: center;
@@ -45,6 +44,7 @@ function App() {
 
         <div className="context">
           <Routes>
+            <Route exact path="/" element={<meta http-equiv="refresh" content="0;url=/Overview" />} />
             <Route path="/Overview" element={<Overview />} />
             <Route path="/ProductSales" element={<ProductSales />} />
             <Route path="/BusinessAnalysis" element={<BusinessAnalysis />} />
