@@ -3,8 +3,8 @@ import styled from "styled-components"
 import Page from "../Page"
 import Embed from "../Embed"
 
-const First_Embed = Embed.CustomContainer([], <img alt="icon"/>)
-const Second_Embed = Embed.CustomContainer([
+const FirstEmbed = Embed.CustomContainer([], <img alt="icon"/>)
+const SecondEmbed = Embed.CustomContainer([
     {
         color: `rgba(18, 147, 154, 1)`,
         text: "Income"
@@ -64,25 +64,25 @@ export default function PettyCash(props) {
                 text="Overview"
             />
             <EmbedList>
-            <First_Embed Title="Total Petty Cash Outgoing">
+            <FirstEmbed Title="Total Petty Cash Outgoing">
                 <Row>
                     $
                     <RowRight>
                         <Text size="32px">-31876</Text>
                     </RowRight>
                 </Row>
-            </First_Embed>
+            </FirstEmbed>
 
-            <First_Embed Title="Ratio Of Operating Expenses">
+            <FirstEmbed Title="Ratio Of Operating Expenses">
                 <Row>
                     <RowRight>
                         <Text size="48px">5.8%</Text>
                     </RowRight>
                 </Row>
-            </First_Embed>
+            </FirstEmbed>
             </EmbedList>
 
-            <Second_Embed Title="Petty Cash In And Out Status" />
+            <SecondEmbed Title="Petty Cash In And Out Status" />
         </span>
     )
 } 
