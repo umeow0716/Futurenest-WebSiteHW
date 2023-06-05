@@ -3,30 +3,36 @@ import Info from './Sales/Info.svg'
 import styled from "styled-components"
 
 //灰色容器
-const Container = (props) => styled.div`
-    box-sizing: border-box;
-    background-color: rgba(255, 255, 255, 1);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.06);
-    border-radius: 12px;
-    margin: 1vmin;
-    width: max-content;
-    max-width: ${props.maxWidth || "auto"};
-    height: max-content;
-    margin-bottom: 5vmin;
-    margin-top: 3vmin;
+const Container = (props) => {
+    const ContainerStyle = styled.div`
+        box-sizing: border-box;
+        background-color: rgba(255, 255, 255, 1);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.06);
+        border-radius: 12px;
+        margin: 1vmin;
+        width: max-content;
+        max-width: ${props.maxWidth || "auto"};
+        height: max-content;
+        margin-bottom: 5vmin;
+        margin-top: 3vmin;
 
-    transform: scale(1,1);
-    transition: all 200ms ease-out;
+        transform: scale(1,1);
+        transition: all 200ms ease-out;
 
-    &:hover {
-        transform:scale(1.06, 1.06);
-        z-index: 97;
-    }
-`;
+        &:hover {
+            transform:scale(1.06, 1.06);
+            z-index: 97;
+        }
+    `;
+
+    return (
+        <ContainerStyle>{props.children}</ContainerStyle>
+    )
+}
 
 //將容器上下隔開(灰色底線)
 const Box = styled.div`
