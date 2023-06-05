@@ -6,6 +6,7 @@ import Sidebar from "./components/Sidebar.js";
 import Overview from "./components/CenterColumn/CenterColumn";
 import ProductSales from "./components/Sales/ProductSales";
 import BusinessAnalysis from "./components/Sales/BusinessAnalysis";
+import PettyCash from "./components/Finance/PettyCash"
 import Notification from "./Notification.svg";
 import Cloud from "./Cloud.svg";
 
@@ -48,6 +49,7 @@ function App() {
             <Route path="/Overview" element={<Overview />} />
             <Route path="/ProductSales" element={<ProductSales />} />
             <Route path="/BusinessAnalysis" element={<BusinessAnalysis />} />
+            <Route path="/PettyCash" element={<PettyCash />} />
           </Routes>
         </div>
       </div>
