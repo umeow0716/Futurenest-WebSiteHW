@@ -6,7 +6,7 @@ import Page from "../Page";
 function App() {
   const Estimated = Embed.CustomContainer(
     [{ text: "Estimated transaction amount", color: "#12939A" }],
-    "36.3vw"
+    "36.35vw"
   );
 
   const AchievementRate = Embed.CustomContainer(
@@ -14,16 +14,16 @@ function App() {
       { text: "Project Revenue", color: "#12939A" },
       { text: "Project Cost", color: "rgba(239, 93, 40, 0.4)" },
     ],
-    "73.5vw"
+    "73.6vw"
   );
 
   const SalesRank = Embed.CustomContainer(
     [],
-    "73.5vw",
+    "73.6vw",
     "yyyy/mm/dd"
   );
 
-  const Card = Embed.CustomContainer([], "17.7vw");
+  const Card = Embed.CustomContainer([], "17.71vw");
 
   const CardList = styled.span`
     display: flex;
