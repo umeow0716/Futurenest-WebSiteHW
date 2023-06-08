@@ -140,7 +140,7 @@ const Left = styled.span`
     font-size: 16px;
 `
 
-function CustomContainer(DotList = [], maxWidth = "auto", description="", DotLineDiscription="", CustomDot="", CustomContent="") {
+function CustomContainer(DotList = [], maxWidth = "auto", description="", DotLineDiscription="") {
     return class Object extends Component {
         constructor(props) {
             super(props);
@@ -177,19 +177,18 @@ function CustomContainer(DotList = [], maxWidth = "auto", description="", DotLin
                             <InfoButton href='#'><img src={Info} alt="Info" /></InfoButton>
                         </this.Title>
                         {
-                            DotList.length ?
+                            DotList.length || this.props.CustomDot ?
                             <DotRow>
-                                <Left>{DotLineDiscription}</Left>
+                                <Left>{DotLineDiscription || ""}</Left>
                                 {
                                     DotList.map(x => 
                                         <Inline><DotObject color={x.color}/>{x.text}</Inline>
                                     )
                                 }
-                                { CustomDot ? <CustomDot /> : "" }
+                                { this.props.CustomDot || "" }
                             </DotRow> :
                             ""
                         }
-                        { CustomContent }
                     </Box>
                     {this.props.children}
                     {this.props.CustomContent || ""}

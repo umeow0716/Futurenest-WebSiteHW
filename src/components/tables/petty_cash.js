@@ -3,8 +3,6 @@ import { Table, Table_container } from "./styled_table";
 function Petty_cash() {
   return (
     <Table_container>
-      <h3>Petty cash in and out records</h3>
-      <hr />
       <Table>
         <thead>
           <tr class="table_header">
