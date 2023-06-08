@@ -132,7 +132,15 @@ const EmbedList = styled.span`
     flex-wrap: wrap;
 `
 
-function CustomContainer(DotList = [], maxWidth = "auto", description="", CustomContent="") {
+const Left = styled.span`
+    margin-right: auto;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+`
+
+function CustomContainer(DotList = [], maxWidth = "auto", description="", DotLineDiscription="", CustomDot="", CustomContent="") {
     return class Object extends Component {
         constructor(props) {
             super(props);
@@ -155,7 +163,7 @@ function CustomContainer(DotList = [], maxWidth = "auto", description="", Custom
         `
 
         Img = styled.img`
-            max-width: 100%;
+            width: 100%;
             margin-bottom: 3vmin;
         `;
 
@@ -171,14 +179,17 @@ function CustomContainer(DotList = [], maxWidth = "auto", description="", Custom
                         {
                             DotList.length ?
                             <DotRow>
+                                <Left>{DotLineDiscription}</Left>
                                 {
                                     DotList.map(x => 
                                         <Inline><DotObject color={x.color}/>{x.text}</Inline>
                                     )
                                 }
+                                { CustomDot ? <CustomDot /> : "" }
                             </DotRow> :
                             ""
                         }
+                        { CustomContent }
                     </Box>
                     {this.props.children}
                     {this.props.CustomContent || ""}

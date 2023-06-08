@@ -17,7 +17,6 @@ const Main = styled.div`
   flex-direction: row;
   font-size: calc(10px + 2vmin);
   color: black;
-  overflow: auto;
 
   height: 100vh;
   width: 100vw;

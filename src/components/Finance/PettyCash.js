@@ -3,6 +3,22 @@ import styled from "styled-components"
 import Page from "../Page"
 import Embed from "../Embed"
 
+const FilterButton = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4px 12px 4px 40px;
+    gap: 12px;
+
+    width: 21vmin;
+    height: 3vmin;
+
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+`;
+
 const FirstEmbed = Embed.CustomContainer([])
 const SecondEmbed = Embed.CustomContainer([
     {
@@ -17,7 +33,9 @@ const SecondEmbed = Embed.CustomContainer([
         color: `rgba(25, 132, 177, 0.8)`,
         text: "account balance"
     }
-], "68vw", "yyyy/mm - yyyy/mm")
+], "calc(72vw + 6vmin)", "", "yyyy/mm - yyyy/mm")
+
+const ThirdEmbed = Embed.CustomContainer([], "34vw", "", "yyyy/mm", <FilterButton>test</FilterButton>)
 
 const EmbedList = styled.div`
     display: flex;
@@ -82,7 +100,14 @@ export default function PettyCash(props) {
             </FirstEmbed>
             </EmbedList>
 
-            <SecondEmbed Title="Petty Cash In And Out Status" />
+            <SecondEmbed Title="Petty Cash In And Out Status" src="https://i.imgur.com/ocBmH7d.png" />
+
+            <Page.CustomPortTitle
+                text="Detail View"
+            />
+
+            <ThirdEmbed Title="Spend Category Comparison"/>
+            
         </span>
     )
 } 
