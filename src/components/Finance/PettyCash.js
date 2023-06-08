@@ -3,6 +3,8 @@ import styled from "styled-components"
 import Page from "../Page"
 import Embed from "../Embed"
 import Petty_cash from "../tables/petty_cash";
+import Details_of_pockets from "../tables/detail_of_pocket_money_pad";
+import { ContentBoxData } from "../Sales/BusinessAnalysis"
 
 const FilterButton = styled.span`
     display: flex;
@@ -45,6 +47,7 @@ const SecondEmbed = Embed.CustomContainer([
 ], "calc(72vw + 6vmin)", "", "yyyy/mm - yyyy/mm")
 
 const ThirdEmbed = Embed.CustomContainer([], "37vw", "", "yyyy/mm")
+const FourthEmbed = Embed.CustomContainer([], "calc(72vw + 6vmin)", "", "yyyy/mm - yyyy/mm")
 
 const EmbedList = styled.div`
     display: flex;
@@ -78,6 +81,55 @@ const Text = (props) => {
         <TextBase>{props.children}</TextBase>
     )
 }
+
+const ContentBoxList = styled.span`
+    display: flex;
+    width: 70vw;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 3vmin;
+    margin-bottom: 3vmin;
+`;
+
+const CustomContent = <ContentBoxList>
+    {ContentBoxData("", [
+        {
+            size: "20px",
+            text: "Paid",
+            color: "rgba(0, 0, 0, 1)",
+        },
+        {
+            icon: "$",
+            size: "32px",
+            text: "24,225",
+            color: "rgba(25, 132, 177, 1)",
+        },
+        {
+            size: "20px",
+            text: "76%",
+            color: "rgba(25, 132, 177, 1)",
+        },
+    ])}
+
+    {ContentBoxData("", [
+        {
+            size: "20px",
+            text: "Expenses Payable",
+            color: "rgba(0, 0, 0, 1)",
+        },
+        {
+            icon: "$",
+            size: "32px",
+            text: "7,651",
+            color: "rgba(239, 93, 40, 0.8)",
+        },
+        {
+            size: "20px",
+            text: "24%",
+            color: "rgba(239, 93, 40, 0.8)",
+        },
+    ])}
+</ContentBoxList>
 
 export default function PettyCash(props) {
     return (
@@ -120,6 +172,10 @@ export default function PettyCash(props) {
                     <Petty_cash />
                 </ThirdEmbed>
             </EmbedList>
+
+            <FourthEmbed Title="Details Of Pocket Money Pad" CustomDot=<FilterButton>Filter: <b>December</b> {FilterDown}</FilterButton> CustomContent={CustomContent}>
+                    <Details_of_pockets />
+            </FourthEmbed>
         </span>
     )
 } 

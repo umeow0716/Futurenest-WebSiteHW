@@ -189,9 +189,9 @@ function CustomContainer(DotList = [], maxWidth = "auto", description="", DotLin
                             </DotRow> :
                             ""
                         }
+                        {this.props.CustomContent || ""}
                     </Box>
                     {this.props.children}
-                    {this.props.CustomContent || ""}
                     {this.props.src ? <this.Img src={this.props.src} alt={this.props.alt || "Image"} /> : "" }
                 </Container>
             )

@@ -3,8 +3,6 @@ import { Table, Table_container } from "./styled_table";
 function Details_of_pockets() {
   return (
     <Table_container>
-      <h3>Details Of Pocket Money Pad</h3>
-      <hr />
       <Table>
         <thead>
           <tr>
