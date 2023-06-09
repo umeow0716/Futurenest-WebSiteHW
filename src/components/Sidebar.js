@@ -275,7 +275,7 @@ function Sidebar() {
                     <Element text="Cash Flow Analysis" />
                     <Element text="Receivable & Payable" />
                     <Element text="Product Performance" />
-                    <Element text="Project Performance" />
+                    <Element text="Project Performance" to="/ProjectPerformance" />
                     <Element text="Petty Cash In & Out" to="/PettyCash" />
                 </Item>
                 <Item icon={IconList.Sales} text="Sales" LastIcon="1">
