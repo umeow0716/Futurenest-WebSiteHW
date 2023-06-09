@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Table_container = styled.div`
+  margin: 3vmin;
   div {
     border-radius: 12px;
     background-color: #cb1616;
