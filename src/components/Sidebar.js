@@ -271,7 +271,7 @@ function Sidebar() {
             <ItemList>
                 <Item icon={IconList.Overview} text="Overview" LastIcon="0" to="/Overview" />
                 <Item icon={IconList.Finance} text="Finance" LastIcon="1">
-                    <Element text="Profit And Loss" />
+                    <Element text="Profit And Loss" to="/ProfitAndLoss" />
                     <Element text="Cash Flow Analysis" />
                     <Element text="Receivable & Payable" />
                     <Element text="Product Performance" to="/ProductPerfromance" />

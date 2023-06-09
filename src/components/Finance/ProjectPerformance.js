@@ -239,12 +239,12 @@ const test = (
         icon: "$",
         size: "24px",
         text: "71,151",
-        color: "rgba(42, 125, 131, 0.8)",
+        color: "rgba(25, 132, 177, 1)",
       },
       {
         size: "20px",
         text: "15%",
-        color: "rgba(42, 125, 131, 0.8)",
+        color: "rgba(25, 132, 177, 1)",
       },
     ])}
   </ContentBoxList>

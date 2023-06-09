@@ -3,24 +3,19 @@ import styled from "styled-components";
 import Embed from "../Embed";
 import Page from "../Page";
 
-import ProjectRevenue from "../tables/project_revnue_details"
-import ProductExpenditure from "../tables/product_revenue_and_expenditure_details"
-
-const FilterDown = <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.59 8.59L12 13.17L7.41 8.59L6 10L12 16L18 10L16.59 8.59Z" fill="black" fill-opacity="0.8"/></svg>
-
 const MonthlyIncome = Embed.CustomContainer(
   [
-    { text: "Project net", color: "rgba(18, 147, 154, 1)" },
-    { text: "Project gross profit", color: "rgba(18, 147, 154, 0.4)" },
-    { text: "Project net profit", color: "rgba(25, 132, 177, 1)"}
+    { text: "net revenue", color: "rgba(18, 147, 154, 1)" },
+    { text: "operating profit", color: "rgba(18, 147, 154, 0.4)" },
+    { text: "Operating profit", color: "rgba(25, 132, 177, 1)"}
   ],
   "73.6vw"
 );
 
 const MonthlyLoss = Embed.CustomContainer(
     [
-      { text: "project cost", color: "rgba(239, 93, 40, 1)" },
-      { text: "Project cost", color: "rgba(239, 93, 40, 0.4)" }
+      { text: "Operating cost", color: "rgba(239, 93, 40, 1)" },
+      { text: "Operating expenses", color: "rgba(239, 93, 40, 0.4)" }
     ],
     "73.6vw"
   );
@@ -29,16 +24,6 @@ const SalesRank = Embed.CustomContainer(
   [],
   "73.6vw",
   "/yyyy"
-);
-
-const CardList = styled.span`
-  display: flex;
-  flex-direction: row;
-`;
-
-const Card = Embed.CustomContainer(
-    [],
-    "36.35vw"
 );
 
 const ContentBox = styled.div`
@@ -76,11 +61,6 @@ const Row = styled.span`
   width: 100%;
   margin-top: 1vmin;
   margin-buttom: 1vmin;
-`;
-
-const Padding = styled.span`
-  margin-left: auto;
-  padding: 2vmin;
 `;
 
 const RowTitle = styled.span`
@@ -161,41 +141,18 @@ export const ContentBoxData = (title, data) => {
   );
 };
 
-const FilterButton = styled.span`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    white-space: nowrap;
-    
-    padding: 4px 12px 4px 40px;
-    gap: 12px;
-
-    width: 21vmin;
-    height: 3vmin;
-
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-    color: rgba(0, 0, 0, 0.8);
-`;
-
 const test = (
   <ContentBoxList>
     {ContentBoxData("", [
       {
         size: "16px",
-        text: "Net Sales",
+        text: "Net Revenue",
         color: "background: rgba(0, 0, 0, 1)",
       },
       {
         icon: "$",
         size: "24px",
-        text: "388,104",
+        text: "862,453",
         color: "rgba(42, 125, 131, 1)",
       },
       {
@@ -208,13 +165,13 @@ const test = (
     {ContentBoxData("", [
       {
         size: "16px",
-        text: "Cost Of Goods Sold",
+        text: "Operating Cost",
         color: "rgba(0, 0, 0, 1)",
       },
       {
         icon: "$",
         size: "24px",
-        text: "-232,862",
+        text: "-517,471",
         color: "rgba(239, 93, 40, 1)",
       },
       {
@@ -227,13 +184,13 @@ const test = (
     {ContentBoxData("", [
       {
         size: "16px",
-        text: "Gross Sales",
+        text: "Operating Profit",
         color: "rgba(0, 0, 0, 1)",
       },
       {
         icon: "$",
         size: "24px",
-        text: "155,241",
+        text: "344,981",
         color: "rgba(42, 125, 131, 0.8)",
       },
       {
@@ -252,7 +209,7 @@ const test = (
       {
         icon: "$",
         size: "24px",
-        text: "-97,026",
+        text: "-215,613",
         color: "rgba(239, 93, 40, 0.8)",
       },
       {
@@ -265,13 +222,13 @@ const test = (
     {ContentBoxData("", [
       {
         size: "16px",
-        text: "Product Business Net Profit",
+        text: "Operating profit",
         color: "rgba(0, 0, 0, 1)",
       },
       {
         icon: "$",
         size: "24px",
-        text: "58,215",
+        text: "129,367",
         color: "rgba(25, 132, 177, 1)",
       },
       {
@@ -282,11 +239,6 @@ const test = (
     ])}
   </ContentBoxList>
 );
-
-const FourthEmbed = Embed.CustomContainer([], "calc(71vw + 6vmin)")
-const Right = styled.span`
-    margin-left: auto;
-`
 
 function App() {
   return (
@@ -300,39 +252,20 @@ function App() {
 
       <Embed.EmbedList>
         <SalesRank
-          Title="Cumulative Product Gains And Losses"
+          Title="Cumulative Project Profit And Loss"
           alt="Analysis"
           CustomContent={test}
         />
         <MonthlyIncome
-          Title="Monthly Product Income"
+          Title="Monthly Project Income"
           src="https://i.imgur.com/Om0Wswv.png"
         />
 
         <MonthlyLoss
-            Title="Monthly Product Fee Loss"
+            Title="Monthly Project Fee Loss"
             src="https://i.imgur.com/oLO3YR2.png"
         />
       </Embed.EmbedList>
-
-      <Page.CustomPortTitle text="Detail View">
-        <Right><FilterButton>Filter Unit: <b>Month</b> {FilterDown}</FilterButton></Right>
-      </Page.CustomPortTitle>
-
-      <CardList>
-        <Card
-          Title="COGS Comparison"
-          src="https://i.imgur.com/xazIDEE.png"
-        />
-        <Card
-          Title="Operating Expenses Comparison"
-          src="https://i.imgur.com/Rr0LRGy.png"
-        />
-      </CardList>
-      
-      <FourthEmbed Title="Product Revenue and Expenditure Details">
-        <ProductExpenditure />
-      </FourthEmbed>
 
       <Page.FooterCompleted />
     </span>
