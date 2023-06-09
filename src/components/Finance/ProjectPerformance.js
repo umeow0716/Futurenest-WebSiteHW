@@ -3,7 +3,8 @@ import styled from "styled-components";
 import Embed from "../Embed";
 import Page from "../Page";
 
-import Information from "../tables/detailed_attack_information"
+import ProjectRevenue from "../tables/project_revnue_details"
+import ProjectExpenditure from "../tables/project_expenditure_details"
 
 const MonthlyIncome = Embed.CustomContainer(
   [
@@ -305,6 +306,16 @@ function App() {
             src="https://i.imgur.com/oLO3YR2.png"
         />
       </Embed.EmbedList>
+      
+      <FourthEmbed Title="Project Revenue Details">
+        <ProjectRevenue />
+      </FourthEmbed>
+
+      <FourthEmbed Title="Project Expenditure Details">
+        <ProjectExpenditure />
+      </FourthEmbed>
+      
+      <Page.CustomPortTitle text="Detail View" />
       <Page.FooterCompleted />
     </span>
   );

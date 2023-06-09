@@ -3,8 +3,6 @@ import { Table, Table_container } from "./styled_table";
 function Project_revnue_details() {
   return (
     <Table_container>
-      <h3>Project Revenue Details</h3>
-      <hr />
       <Table>
         <thead>
           <tr>
