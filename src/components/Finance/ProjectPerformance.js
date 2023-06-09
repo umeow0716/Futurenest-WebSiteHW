@@ -31,11 +31,6 @@ const SalesRank = Embed.CustomContainer(
 
 const Card = Embed.CustomContainer([], "17.71vw");
 
-const CardList = styled.span`
-  display: flex;
-  flex-direction: row;
-`;
-
 const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -135,29 +130,6 @@ class RowData extends Component {
           text={this.props.text}
         />
       </Row>
-    );
-  }
-}
-
-class CardSpan extends Component {
-  constructor(props) {
-    super(props);
-    this.props = props;
-  }
-
-  render() {
-    return (
-      <Card Title={this.props.title}>
-        <Row>
-          <Padding>
-            <RowValue
-              color={this.props.color}
-              size={this.props.size}
-              text={this.props.text}
-            />
-          </Padding>
-        </Row>
-      </Card>
     );
   }
 }
@@ -306,6 +278,8 @@ function App() {
             src="https://i.imgur.com/oLO3YR2.png"
         />
       </Embed.EmbedList>
+
+      <Page.CustomPortTitle text="Detail View" />
       
       <FourthEmbed Title="Project Revenue Details">
         <ProjectRevenue />
@@ -314,8 +288,7 @@ function App() {
       <FourthEmbed Title="Project Expenditure Details">
         <ProjectExpenditure />
       </FourthEmbed>
-      
-      <Page.CustomPortTitle text="Detail View" />
+
       <Page.FooterCompleted />
     </span>
   );
