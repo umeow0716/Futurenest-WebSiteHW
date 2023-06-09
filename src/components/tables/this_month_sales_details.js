@@ -3,8 +3,6 @@ import { Table, Table_container } from "./styled_table";
 function Sales_analysis_1() {
   return (
     <Table_container>
-      <h3>This Month's Sales Details</h3>
-      <hr />
       <Table>
         <thead>
           <tr>

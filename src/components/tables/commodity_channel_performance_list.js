@@ -3,8 +3,6 @@ import { Table, Table_container } from "./styled_table";
 function Sales_analysis_2() {
   return (
     <Table_container>
-      <h3>Commodity Channel Performance List</h3>
-      <hr />
       <Table>
         <thead>
           <tr>

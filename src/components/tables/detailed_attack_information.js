@@ -3,8 +3,6 @@ import { Table, Table_container } from "./styled_table";
 function Sales_overview() {
   return (
     <Table_container>
-      <h3>Detailed Attack Information</h3>
-      <hr />
       <Table>
         <thead>
           <tr>

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Embed from "../Embed";
 import Page from "../Page";
 
+import Information from "../tables/detailed_attack_information"
+
 const Estimated = Embed.CustomContainer(
   [{ text: "Estimated transaction amount", color: "#12939A" }],
   "36.35vw"
@@ -245,6 +247,8 @@ const test = (
   </ContentBoxList>
 );
 
+const FourthEmbed = Embed.CustomContainer([], "calc(71vw + 6vmin)")
+
 function App() {
   return (
     <span>
@@ -301,6 +305,10 @@ function App() {
           src="https://i.imgur.com/V8WYNKP.png"
         />
       </CardList>
+
+      <FourthEmbed Title="Detailed Attack Information">
+        <Information />
+      </FourthEmbed>
       <Page.FooterCompleted />
     </span>
   );

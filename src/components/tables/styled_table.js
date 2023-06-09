@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Table_container = styled.div`
-  margin: 3vmin;
+  margin: 2.86vmin;
   div {
     border-radius: 12px;
     background-color: #cb1616;
@@ -25,13 +25,13 @@ export const Table = styled.table`
   }
 
   thead td {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 700;
     background-color: rgba(0, 0, 0, 0.05);
   }
 
   tbody td {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     background-color: rgba(217, 217, 217, 0.1);
   }
