@@ -54,11 +54,20 @@ const CustomPageTitle = (props) => {
 //段落標題(使用範例: <CustomPortTitle text="this is port title"/>)
 const CustomPortTitle = (props) => {
     return (
-        <PortTitle>
-            {props.text}
-        </PortTitle>
+        <TextBase>
+            <PortTitle>
+                {props.text}
+            </PortTitle>
+            {props.children || ""}
+        </TextBase>
     )
 }
+
+const TextBase = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 92.6%;
+`
 
 //結尾區塊CSS
 const Footer = styled.span`

@@ -3,11 +3,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import styled from "styled-components";
 import Sidebar from "./components/Sidebar.js";
+
 import Overview from "./components/CenterColumn/CenterColumn";
 import ProductSales from "./components/Sales/ProductSales";
 import BusinessAnalysis from "./components/Sales/BusinessAnalysis";
 import PettyCash from "./components/Finance/PettyCash"
 import ProjectPerformance from "./components/Finance/ProjectPerformance"
+import ProductPerfromance from "./components/Finance/ProductPerformance"
+
 import Notification from "./Notification.svg";
 import Cloud from "./Cloud.svg";
 
@@ -51,6 +54,7 @@ function App() {
             <Route path="/BusinessAnalysis" element={<BusinessAnalysis />} />
             <Route path="/PettyCash" element={<PettyCash />} />
             <Route path="/ProjectPerformance" element={<ProjectPerformance />}/>
+            <Route path="/ProductPerfromance" element={<ProductPerfromance /> } />
           </Routes>
         </div>
       </div>

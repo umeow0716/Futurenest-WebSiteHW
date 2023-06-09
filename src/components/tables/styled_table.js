@@ -21,11 +21,11 @@ export const Table = styled.table`
     border-bottom: 1px solid #0000001a;
     padding: 16px;
     height: 10px;
-    width: 108px;
+    width: 8vw;
   }
 
   thead td {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     background-color: rgba(0, 0, 0, 0.05);
   }

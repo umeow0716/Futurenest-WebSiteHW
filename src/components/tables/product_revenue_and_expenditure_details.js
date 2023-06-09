@@ -1,10 +1,8 @@
 import React from "react";
 import { Table, Table_container } from "./styled_table";
-function Product_revenue_and_expenditure_details() {
+function Product_revenue_and_expenditure_details(props) {
   return (
     <Table_container>
-      <h3>Product Revenue and Expenditure Details</h3>
-      <hr />
       <Table>
         <thead>
           <tr>
@@ -23,7 +21,7 @@ function Product_revenue_and_expenditure_details() {
             <td>020418191671</td>
             <td>wall top cabinet frame</td>
             <td>ALVE</td>
-            <td>$630.44</td>s<td>April 28, 2016</td>
+            <td>$630.44</td><td>April 28, 2016</td>
             <td>
               Update: Team still unwilling to commit to a 12 month term. Update:
               Brendan asked about COVID relief, willing to pay for 6 months up

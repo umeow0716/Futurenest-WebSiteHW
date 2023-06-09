@@ -274,7 +274,7 @@ function Sidebar() {
                     <Element text="Profit And Loss" />
                     <Element text="Cash Flow Analysis" />
                     <Element text="Receivable & Payable" />
-                    <Element text="Product Performance" />
+                    <Element text="Product Performance" to="/ProductPerfromance" />
                     <Element text="Project Performance" to="/ProjectPerformance" />
                     <Element text="Petty Cash In & Out" to="/PettyCash" />
                 </Item>
