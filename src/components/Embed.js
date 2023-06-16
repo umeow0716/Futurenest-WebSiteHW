@@ -15,7 +15,7 @@ const Container = (props) => {
         border-radius: 12px;
         margin: 1vmin;
         width: max-content;
-        max-width: ${props.maxWidth || "auto"};
+        width: ${props.maxWidth || "auto"};
         height: max-content;
         margin-bottom: 5vmin;
         margin-top: 3vmin;

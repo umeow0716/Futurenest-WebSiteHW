@@ -3,10 +3,34 @@ import styled from "styled-components";
 import Embed from "../Embed";
 import Page from "../Page";
 
+import { Column } from '@ant-design/plots';
+
 const base = "http://ec2-35-77-78-80.ap-northeast-1.compute.amazonaws.com:8000";
 
 const FormatNumber = (num) => new Intl.NumberFormat().format(num);
-const FormatPer = (num) => new Intl.NumberFormat("en-US", {style: "percent" }).format(num)
+const FormatPer = (num) => new Intl.NumberFormat("en-US", {style: "percent" }).format(num);
+
+const IncomeParser = (arg) => {
+  let data = arg["data"];
+  let result = []
+
+  let keys = Object.keys(data);
+  let values = Object.values(data);
+
+  for(let i = 0 ; i < values?.length ; i++) {
+    let value = values[i]
+    let value_keys = Object.keys(value);
+    for(let key of value_keys) {
+      result.push({
+        name: key,
+        year: keys[i],
+        value: value[key]
+      });
+    }
+  }
+
+  return result;
+}
 
 const MonthlyIncome = Embed.CustomContainer(
   [
@@ -147,14 +171,51 @@ export const ContentBoxData = (props) => {
 };
 
 function App() {
-  const [data, setData] = useState({});
+  const [accumulatedEarnings, setAccumulatedEarnings] = useState({});
+  const [MonthlyIncomeData, setMonthlyIncomeData] = useState([]);
+
+  const config = {
+    data: MonthlyIncomeData,
+    isGroup: true,
+    xField: 'year',
+    yField: 'value',
+    seriesField: 'name',
+    // 分组柱状图 组内柱子间的间距 (像素级别)
+    dodgePadding: 6,
+    label: {
+      // 可手动配置 label 数据标签位置
+      position: 'middle',
+      // 'top', 'middle', 'bottom'
+      // 可配置附加的布局方法
+      layout: [
+        // 柱形图数据标签位置自动调整
+        {
+          type: 'interval-adjust-position',
+        }, // 数据标签防遮挡
+        {
+          type: 'interval-hide-overlap',
+        }, // 数据标签文颜色自动调整
+        {
+          type: 'adjust-color',
+        },
+      ],
+    },
+  }
 
   useEffect(() => {
-    console.log("test")
     fetch(`${base}/api/comprehensiveIncomeAnalysis/accumulatedEarnings`)
       .then(d => d.json())
-      .then(d => setData(d));
+      .then(d => setAccumulatedEarnings(d));
+
+    fetch(`${base}/api/comprehensiveIncomeAnalysis/monthlyIncome`)
+      .then(d => d.json())
+      .then(d => setMonthlyIncomeData(IncomeParser(d)));
   }, []);
+
+  const Fill = styled.div`
+    width: 100%;
+    height: 100%;
+  `
 
   return (
     <span>
@@ -179,12 +240,12 @@ function App() {
               {
                 icon: "$",
                 size: "24px",
-                text: FormatNumber(data.netOperatingRevenue),
+                text: FormatNumber(accumulatedEarnings.netOperatingRevenue),
                 color: "rgba(42, 125, 131, 1)",
               },
               {
                 size: "20px",
-                text: `${data.netOperatingRevenuePer}%`,
+                text: FormatPer(accumulatedEarnings.netOperatingRevenuePer),
                 color: "rgba(42, 125, 131, 1)",
               },
             ]} />
@@ -198,12 +259,12 @@ function App() {
               {
                 icon: "$",
                 size: "24px",
-                text: FormatNumber(data.totalOperatingCost),
+                text: FormatNumber(accumulatedEarnings.totalOperatingCost),
                 color: "rgba(239, 93, 40, 1)",
               },
               {
                 size: "20px",
-                text: FormatPer(data.operatingCostPer),
+                text: FormatPer(accumulatedEarnings.operatingCostPer),
                 color: "rgba(239, 93, 40, 1)",
               },
             ]} />
@@ -217,12 +278,12 @@ function App() {
               {
                 icon: "$",
                 size: "24px",
-                text: FormatNumber(data.operatingProfit),
+                text: FormatNumber(accumulatedEarnings.operatingProfit),
                 color: "rgba(42, 125, 131, 0.8)",
               },
               {
                 size: "20px",
-                text: FormatPer(data.operatingProfitPer),
+                text: FormatPer(accumulatedEarnings.operatingProfitPer),
                 color: "rgba(42, 125, 131, 0.8)",
               },
             ]} />
@@ -236,12 +297,12 @@ function App() {
               {
                 icon: "$",
                 size: "24px",
-                text: FormatNumber(data.operatingExpense),
+                text: FormatNumber(accumulatedEarnings.operatingExpense),
                 color: "rgba(239, 93, 40, 0.8)",
               },
               {
                 size: "20px",
-                text: FormatPer(data.operatingExpensePer),
+                text: FormatPer(accumulatedEarnings.operatingExpensePer),
                 color: "rgba(239, 93, 40, 0.8)",
               },
             ]} />
@@ -255,22 +316,23 @@ function App() {
               {
                 icon: "$",
                 size: "24px",
-                text: FormatNumber(data.operatingNetProfit),
+                text: FormatNumber(accumulatedEarnings.operatingNetProfit),
                 color: "rgba(25, 132, 177, 1)",
               },
               {
                 size: "20px",
-                text: FormatPer(data.operatingNetProfitPer),
+                text: FormatPer(accumulatedEarnings.operatingNetProfitPer),
                 color: "rgba(25, 132, 177, 1)",
               },
             ]} />
           </ContentBoxList>
         </SalesRank>
 
-        <MonthlyIncome
-          Title="Monthly Project Income"
-          src="https://i.imgur.com/Om0Wswv.png"
-        />
+        <MonthlyIncome Title="Monthly Project Income">
+          <Fill>
+            <Column {...config} />
+          </Fill>
+        </MonthlyIncome>
 
         <MonthlyLoss
             Title="Monthly Project Fee Loss"
