@@ -124,11 +124,11 @@ class RowData extends Component {
   }
 }
 
-export const ContentBoxData = (title, data) => {
+export const ContentBoxData = (props) => {
   return (
     <ContentBox>
-      {title ? <ContentTitle>{title}</ContentTitle> : ""}
-      {data.map((x) => (
+      {props.title ? <ContentTitle>{props.title}</ContentTitle> : ""}
+      {props.data.map((x) => (
         <RowData
           title={x.title}
           icon={x?.icon || ""}
@@ -140,105 +140,6 @@ export const ContentBoxData = (title, data) => {
     </ContentBox>
   );
 };
-
-const test = (
-  <ContentBoxList>
-    {ContentBoxData("", [
-      {
-        size: "16px",
-        text: "Net Revenue",
-        color: "background: rgba(0, 0, 0, 1)",
-      },
-      {
-        icon: "$",
-        size: "24px",
-        text: "862,453",
-        color: "rgba(42, 125, 131, 1)",
-      },
-      {
-        size: "20px",
-        text: "100%",
-        color: "rgba(42, 125, 131, 1)",
-      },
-    ])}
-
-    {ContentBoxData("", [
-      {
-        size: "16px",
-        text: "Operating Cost",
-        color: "rgba(0, 0, 0, 1)",
-      },
-      {
-        icon: "$",
-        size: "24px",
-        text: "-517,471",
-        color: "rgba(239, 93, 40, 1)",
-      },
-      {
-        size: "20px",
-        text: "-60%",
-        color: "rgba(239, 93, 40, 1)",
-      },
-    ])}
-
-    {ContentBoxData("", [
-      {
-        size: "16px",
-        text: "Operating Profit",
-        color: "rgba(0, 0, 0, 1)",
-      },
-      {
-        icon: "$",
-        size: "24px",
-        text: "344,981",
-        color: "rgba(42, 125, 131, 0.8)",
-      },
-      {
-        size: "20px",
-        text: "40%",
-        color: "rgba(42, 125, 131, 0.8)",
-      },
-    ])}
-
-    {ContentBoxData("", [
-      {
-        size: "16px",
-        text: "Operating Expenses",
-        color: "rgba(0, 0, 0, 1)",
-      },
-      {
-        icon: "$",
-        size: "24px",
-        text: "-215,613",
-        color: "rgba(239, 93, 40, 0.8)",
-      },
-      {
-        size: "20px",
-        text: "-25%",
-        color: "rgba(239, 93, 40, 0.8)",
-      },
-    ])}
-
-    {ContentBoxData("", [
-      {
-        size: "16px",
-        text: "Operating profit",
-        color: "rgba(0, 0, 0, 1)",
-      },
-      {
-        icon: "$",
-        size: "24px",
-        text: "129,367",
-        color: "rgba(25, 132, 177, 1)",
-      },
-      {
-        size: "20px",
-        text: "15%",
-        color: "rgba(25, 132, 177, 1)",
-      },
-    ])}
-  </ContentBoxList>
-);
 
 function App() {
   return (
@@ -253,9 +154,105 @@ function App() {
       <Embed.EmbedList>
         <SalesRank
           Title="Cumulative Project Profit And Loss"
-          alt="Analysis"
-          CustomContent={test}
-        />
+          alt="Analysis">
+          <ContentBoxList>
+            <ContentBoxData data={[
+              {
+                size: "16px",
+                text: "Net Revenue",
+                color: "background: rgba(0, 0, 0, 1)",
+              },
+              {
+                icon: "$",
+                size: "24px",
+                text: "862,453",
+                color: "rgba(42, 125, 131, 1)",
+              },
+              {
+                size: "20px",
+                text: "100%",
+                color: "rgba(42, 125, 131, 1)",
+              },
+            ]} />
+
+            <ContentBoxData data={[
+              {
+                size: "16px",
+                text: "Operating Cost",
+                color: "rgba(0, 0, 0, 1)",
+              },
+              {
+                icon: "$",
+                size: "24px",
+                text: "-517,471",
+                color: "rgba(239, 93, 40, 1)",
+              },
+              {
+                size: "20px",
+                text: "-60%",
+                color: "rgba(239, 93, 40, 1)",
+              },
+            ]} />
+
+            <ContentBoxData data={[
+              {
+                size: "16px",
+                text: "Operating Profit",
+                color: "rgba(0, 0, 0, 1)",
+              },
+              {
+                icon: "$",
+                size: "24px",
+                text: "344,981",
+                color: "rgba(42, 125, 131, 0.8)",
+              },
+              {
+                size: "20px",
+                text: "40%",
+                color: "rgba(42, 125, 131, 0.8)",
+              },
+            ]} />
+
+            <ContentBoxData data={[
+              {
+                size: "16px",
+                text: "Operating Expenses",
+                color: "rgba(0, 0, 0, 1)",
+              },
+              {
+                icon: "$",
+                size: "24px",
+                text: "-215,613",
+                color: "rgba(239, 93, 40, 0.8)",
+              },
+              {
+                size: "20px",
+                text: "-25%",
+                color: "rgba(239, 93, 40, 0.8)",
+              },
+            ]} />
+
+            <ContentBoxData data={[
+              {
+                size: "16px",
+                text: "Operating profit",
+                color: "rgba(0, 0, 0, 1)",
+              },
+              {
+                icon: "$",
+                size: "24px",
+                text: "129,367",
+                color: "rgba(25, 132, 177, 1)",
+              },
+              {
+                size: "20px",
+                text: "15%",
+                color: "rgba(25, 132, 177, 1)",
+              },
+            ]} />
+          </ContentBoxList>
+        </SalesRank>
+        
         <MonthlyIncome
           Title="Monthly Project Income"
           src="https://i.imgur.com/Om0Wswv.png"
