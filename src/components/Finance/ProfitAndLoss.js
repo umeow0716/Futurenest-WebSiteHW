@@ -1,7 +1,12 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import styled from "styled-components";
 import Embed from "../Embed";
 import Page from "../Page";
+
+const base = "http://ec2-35-77-78-80.ap-northeast-1.compute.amazonaws.com:8000";
+
+const FormatNumber = (num) => new Intl.NumberFormat().format(num);
+const FormatPer = (num) => new Intl.NumberFormat("en-US", {style: "percent" }).format(num)
 
 const MonthlyIncome = Embed.CustomContainer(
   [
@@ -52,7 +57,7 @@ const ContentBoxList = styled.span`
   flex-direction: row;
   margin-right: 3vmin;
   margin-bottom: 3vmin;
-  width: 70vw;
+  width: 72.6vw;
 `;
 
 const Row = styled.span`
@@ -142,6 +147,15 @@ export const ContentBoxData = (props) => {
 };
 
 function App() {
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    console.log("test")
+    fetch(`${base}/api/comprehensiveIncomeAnalysis/accumulatedEarnings`)
+      .then(d => d.json())
+      .then(d => setData(d));
+  }, []);
+
   return (
     <span>
       <Page.CustomPageTitle
@@ -165,12 +179,12 @@ function App() {
               {
                 icon: "$",
                 size: "24px",
-                text: "862,453",
+                text: FormatNumber(data.netOperatingRevenue),
                 color: "rgba(42, 125, 131, 1)",
               },
               {
                 size: "20px",
-                text: "100%",
+                text: `${data.netOperatingRevenuePer}%`,
                 color: "rgba(42, 125, 131, 1)",
               },
             ]} />
@@ -184,12 +198,12 @@ function App() {
               {
                 icon: "$",
                 size: "24px",
-                text: "-517,471",
+                text: FormatNumber(data.totalOperatingCost),
                 color: "rgba(239, 93, 40, 1)",
               },
               {
                 size: "20px",
-                text: "-60%",
+                text: FormatPer(data.operatingCostPer),
                 color: "rgba(239, 93, 40, 1)",
               },
             ]} />
@@ -203,12 +217,12 @@ function App() {
               {
                 icon: "$",
                 size: "24px",
-                text: "344,981",
+                text: FormatNumber(data.operatingProfit),
                 color: "rgba(42, 125, 131, 0.8)",
               },
               {
                 size: "20px",
-                text: "40%",
+                text: FormatPer(data.operatingProfitPer),
                 color: "rgba(42, 125, 131, 0.8)",
               },
             ]} />
@@ -222,12 +236,12 @@ function App() {
               {
                 icon: "$",
                 size: "24px",
-                text: "-215,613",
+                text: FormatNumber(data.operatingExpense),
                 color: "rgba(239, 93, 40, 0.8)",
               },
               {
                 size: "20px",
-                text: "-25%",
+                text: FormatPer(data.operatingExpensePer),
                 color: "rgba(239, 93, 40, 0.8)",
               },
             ]} />
@@ -241,18 +255,18 @@ function App() {
               {
                 icon: "$",
                 size: "24px",
-                text: "129,367",
+                text: FormatNumber(data.operatingNetProfit),
                 color: "rgba(25, 132, 177, 1)",
               },
               {
                 size: "20px",
-                text: "15%",
+                text: FormatPer(data.operatingNetProfitPer),
                 color: "rgba(25, 132, 177, 1)",
               },
             ]} />
           </ContentBoxList>
         </SalesRank>
-        
+
         <MonthlyIncome
           Title="Monthly Project Income"
           src="https://i.imgur.com/Om0Wswv.png"
