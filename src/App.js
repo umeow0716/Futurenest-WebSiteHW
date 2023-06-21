@@ -11,6 +11,8 @@ import PettyCash from "./components/Finance/PettyCash"
 import ProjectPerformance from "./components/Finance/ProjectPerformance"
 import ProductPerfromance from "./components/Finance/ProductPerformance"
 import ProfitAndLoss from "./components/Finance/ProfitAndLoss"
+import CashFlowAnalysis from "./components/Finance/CashFlowAnalysis"
+import ReceviablePayable from "./components/Finance/ReceviablePayable"
 
 import Notification from "./Notification.svg";
 import Cloud from "./Cloud.svg";
@@ -57,6 +59,8 @@ function App() {
             <Route path="/ProjectPerformance" element={<ProjectPerformance />}/>
             <Route path="/ProductPerfromance" element={<ProductPerfromance /> } />
             <Route path="/ProfitAndLoss" element={<ProfitAndLoss />} />
+            <Route path="/CashFlowAnalysis" element={<CashFlowAnalysis />} />
+            <Route path="/ReceviablePayable" element={<ReceviablePayable />} />
           </Routes>
         </div>
       </div>

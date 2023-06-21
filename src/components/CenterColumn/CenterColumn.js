@@ -1,9 +1,4 @@
 import './CenterColumn.css';
-import styled from 'styled-components'
-
-const test = styled.div`
-    postion: relative;
-`
 
 function CenterColumn() {
     return (
@@ -17,7 +12,7 @@ function CenterColumn() {
                 <div className='MonthlyIncome'>
                     <p>Monthly Income</p>
                     <div className='littletitle'>yyyy/mm - yyyy/mm<span>Net Revenu</span></div>
-                    <img className='MonthlyIncomeIMG' src='./OV_Fi_MonthlyIncome.jpg' />
+                    <img className='MonthlyIncomeIMG' src='./OV_Fi_MonthlyIncome.jpg' alt="Monthly Income" />
                 </div>
                 <div className='FinanceRow'>
                     <div className='CurrentCashProfile'>

@@ -1,8 +1,8 @@
 import React from "react";
-import { Table, Table_container } from "./styled_table";
+import { Table, TableContainer } from "./styled_table";
 function Accounts_recievable() {
   return (
-    <Table_container>
+    <TableContainer>
       <h3>Payable Item Details</h3>
       <hr />
       <Table>
@@ -81,7 +81,7 @@ function Accounts_recievable() {
           </tr>
         </tbody>
       </Table>
-    </Table_container>
+    </TableContainer>
   );
 }
 export default Accounts_recievable;

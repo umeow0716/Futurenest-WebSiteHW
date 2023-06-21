@@ -1,10 +1,102 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import styled from "styled-components";
 import Embed from "../Embed";
 import Page from "../Page";
 
-import ProjectRevenue from "../tables/project_revnue_details"
 import ProjectExpenditure from "../tables/project_expenditure_details"
+
+import { Table } from 'antd';
+import { Bar } from '@ant-design/plots';
+
+const base = "http://ec2-35-77-78-80.ap-northeast-1.compute.amazonaws.com:8000";
+
+const DataParser = (arg) => {
+  let data = arg["data"];
+  let result = []
+
+  let keys = Object.keys(data);
+  let values = Object.values(data);
+
+  for(let i = 0 ; i < values?.length ; i++) {
+    let value = values[i]
+    let value_keys = Object.keys(value);
+    for(let key of value_keys) {
+      result.push({
+        name: key,
+        time: keys?.[i],
+        value: value?.[key]
+      });
+    }
+  }
+  return result;
+}
+
+const BarConfig = (data) => ({
+  data,
+  xField: 'value',
+  yField: 'time',
+  seriesField: 'time',
+  legend: {
+    position: 'top-left',
+  },
+});
+
+const BoxFill = styled.div`
+  width: 98%;
+  margin: 1%;
+`;
+
+const columns = [
+  {
+    title: "專案名稱",
+    dataIndex: "project",
+    key: "project",
+    render: item => item["project_name"]
+  },
+  {
+    title: '受買人',
+    dataIndex: 'buyer',
+    key: 'buyer',
+    render: item => item["customer_name"]
+  },
+  {
+    title: "買方統編",
+    dataIndex: "buyer",
+    key: "buyer",
+    render: item => item["compilation"]
+  },
+  {
+    title: "發票開立日期",
+    dataIndex: "issue_time",
+    key: "issue_time",
+  },
+  {
+      title: "財務作業進行狀況",
+      dataIndex: "enter_status",
+      key: "enter_status"
+  },
+  {
+      title: "預計出款日",
+      dataIndex: "estimated_date",
+      key: "estimated_date"
+  },
+  {
+      title: "實際出款日",
+      dataIndex: "posting_date",
+      key: "posting_date"
+  },
+  {
+      title: "銷售額",
+      dataIndex: "sales_amount",
+      key: "sales_amount"
+  },
+  {
+      title: "營業稅額",
+      dataIndex: "sales_amount",
+      key: "sales_amount",
+      render: item => item / 20
+  }
+];
 
 const MonthlyIncome = Embed.CustomContainer(
   [
@@ -28,8 +120,6 @@ const SalesRank = Embed.CustomContainer(
   "73.6vw",
   "/yyyy"
 );
-
-const Card = Embed.CustomContainer([], "17.71vw");
 
 const ContentBox = styled.div`
   display: flex;
@@ -66,11 +156,6 @@ const Row = styled.span`
   width: 100%;
   margin-top: 1vmin;
   margin-buttom: 1vmin;
-`;
-
-const Padding = styled.span`
-  margin-left: auto;
-  padding: 2vmin;
 `;
 
 const RowTitle = styled.span`
@@ -253,6 +338,18 @@ const test = (
 const FourthEmbed = Embed.CustomContainer([], "calc(71vw + 6vmin)")
 
 function App() {
+  const [MonthlyCosts, setMonthlyCosts] = useState([]);
+  const [Detail, setDetail] = useState([]);
+
+  useEffect(() => {
+    fetch(`${base}/api/projectPerformance/monthlyProjectExpensesCosts?startYear=2023&endYear=2023&startMonth=1&endMonth=12&startDay=1&endDay=31`)
+      .then(d => d.json())
+      .then(d => setMonthlyCosts(DataParser(d)));
+    
+    fetch(`${base}/api/projectPerformance/projectIncomeDetail`)
+      .then(d => d.json())
+      .then(d => setDetail(d["data"]));
+  }, []);
   return (
     <span>
       <Page.CustomPageTitle
@@ -273,16 +370,19 @@ function App() {
           src="https://i.imgur.com/Om0Wswv.png"
         />
 
-        <MonthlyLoss
-            Title="Monthly Project Fee Loss"
-            src="https://i.imgur.com/oLO3YR2.png"
-        />
+        <MonthlyLoss Title="Monthly Project Fee Loss">
+          <BoxFill>
+            <Bar {...BarConfig(MonthlyCosts)} />
+          </BoxFill>
+        </MonthlyLoss>
       </Embed.EmbedList>
 
       <Page.CustomPortTitle text="Detail View" />
       
       <FourthEmbed Title="Project Revenue Details">
-        <ProjectRevenue />
+        <BoxFill>
+          <Table dataSource={Detail} columns={columns} />
+        </BoxFill>
       </FourthEmbed>
 
       <FourthEmbed Title="Project Expenditure Details">

@@ -1,8 +1,8 @@
 import React from "react";
-import { Table, Table_container } from "./styled_table";
+import { Table, TableContainer } from "./styled_table";
 function Sales_overview() {
   return (
-    <Table_container>
+    <TableContainer>
       <Table>
         <thead>
           <tr>
@@ -100,7 +100,7 @@ function Sales_overview() {
           </tr>
         </tbody>
       </Table>
-    </Table_container>
+    </TableContainer>
   );
 }
 export default Sales_overview;

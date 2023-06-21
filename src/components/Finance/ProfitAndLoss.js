@@ -32,22 +32,10 @@ const IncomeParser = (arg) => {
   return result;
 }
 
-const MonthlyIncome = Embed.CustomContainer(
-  [
-    { text: "net revenue", color: "rgba(18, 147, 154, 1)" },
-    { text: "operating profit", color: "rgba(18, 147, 154, 0.4)" },
-    { text: "Operating profit", color: "rgba(25, 132, 177, 1)"}
-  ],
+const EmbedBase = Embed.CustomContainer(
+  [],
   "73.6vw"
 );
-
-const MonthlyLoss = Embed.CustomContainer(
-    [
-      { text: "Operating cost", color: "rgba(239, 93, 40, 1)" },
-      { text: "Operating expenses", color: "rgba(239, 93, 40, 0.4)" }
-    ],
-    "73.6vw"
-  );
 
 const SalesRank = Embed.CustomContainer(
   [],
@@ -76,7 +64,7 @@ const ContentTitle = styled.div`
   margin-bottom: 2vmin;
 `;
 
-const ContentBoxList = styled.span`
+export const ContentBoxList = styled.span`
   display: flex;
   flex-direction: row;
   margin-right: 3vmin;
@@ -170,37 +158,38 @@ export const ContentBoxData = (props) => {
   );
 };
 
+const config = (data) => ({
+  data,
+  isGroup: true,
+  xField: 'year',
+  yField: 'value',
+  seriesField: 'name',
+  // 分组柱状图 组内柱子间的间距 (像素级别)
+  dodgePadding: 6,
+  label: {
+    // 可手动配置 label 数据标签位置
+    position: 'middle',
+    // 'top', 'middle', 'bottom'
+    // 可配置附加的布局方法
+    layout: [
+      // 柱形图数据标签位置自动调整
+      {
+        type: 'interval-adjust-position',
+      }, // 数据标签防遮挡
+      {
+        type: 'interval-hide-overlap',
+      }, // 数据标签文颜色自动调整
+      {
+        type: 'adjust-color',
+      },
+    ],
+  },
+});
+
 function App() {
   const [accumulatedEarnings, setAccumulatedEarnings] = useState({});
   const [MonthlyIncomeData, setMonthlyIncomeData] = useState([]);
-
-  const config = {
-    data: MonthlyIncomeData,
-    isGroup: true,
-    xField: 'year',
-    yField: 'value',
-    seriesField: 'name',
-    // 分组柱状图 组内柱子间的间距 (像素级别)
-    dodgePadding: 6,
-    label: {
-      // 可手动配置 label 数据标签位置
-      position: 'middle',
-      // 'top', 'middle', 'bottom'
-      // 可配置附加的布局方法
-      layout: [
-        // 柱形图数据标签位置自动调整
-        {
-          type: 'interval-adjust-position',
-        }, // 数据标签防遮挡
-        {
-          type: 'interval-hide-overlap',
-        }, // 数据标签文颜色自动调整
-        {
-          type: 'adjust-color',
-        },
-      ],
-    },
-  }
+  const [MonthlyLossData, setMonthlyLossData] = useState([]);
 
   useEffect(() => {
     fetch(`${base}/api/comprehensiveIncomeAnalysis/accumulatedEarnings`)
@@ -210,11 +199,15 @@ function App() {
     fetch(`${base}/api/comprehensiveIncomeAnalysis/monthlyIncome`)
       .then(d => d.json())
       .then(d => setMonthlyIncomeData(IncomeParser(d)));
+
+    fetch(`${base}/api/comprehensiveIncomeAnalysis/monthlyExpensesCosts`)
+      .then(d => d.json())
+      .then(d => setMonthlyLossData(IncomeParser(d)));
   }, []);
 
   const Fill = styled.div`
-    width: 100%;
-    height: 100%;
+    width: 98%;
+    margin: 1%;
   `
 
   return (
@@ -328,16 +321,17 @@ function App() {
           </ContentBoxList>
         </SalesRank>
 
-        <MonthlyIncome Title="Monthly Project Income">
+        <EmbedBase Title="Monthly Project Income">
           <Fill>
-            <Column {...config} />
+            <Column {...config(MonthlyIncomeData)} />
           </Fill>
-        </MonthlyIncome>
+        </EmbedBase>
 
-        <MonthlyLoss
-            Title="Monthly Project Fee Loss"
-            src="https://i.imgur.com/oLO3YR2.png"
-        />
+        <EmbedBase Title="Monthly Project Fee Loss">
+          <Fill>
+            <Column {...config(MonthlyLossData)} />
+          </Fill>
+        </EmbedBase>
       </Embed.EmbedList>
 
       <Page.FooterCompleted />

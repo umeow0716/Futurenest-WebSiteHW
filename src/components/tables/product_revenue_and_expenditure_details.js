@@ -1,8 +1,8 @@
 import React from "react";
-import { Table, Table_container } from "./styled_table";
+import { Table, TableContainer } from "./styled_table";
 function Product_revenue_and_expenditure_details(props) {
   return (
-    <Table_container>
+    <TableContainer>
       <Table>
         <thead>
           <tr>
@@ -93,7 +93,7 @@ function Product_revenue_and_expenditure_details(props) {
           </tr>
         </tbody>
       </Table>
-    </Table_container>
+    </TableContainer>
   );
 }
 export default Product_revenue_and_expenditure_details;

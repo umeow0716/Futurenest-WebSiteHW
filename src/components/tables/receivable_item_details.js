@@ -1,8 +1,8 @@
 import React from "react";
-import { Table, Table_container } from "./styled_table";
+import { Table, TableContainer } from "./styled_table";
 function Accounts_payable() {
   return (
-    <Table_container>
+    <TableContainer>
       <h3>Receivable Item Details</h3>
       <hr />
       <Table>
@@ -81,7 +81,7 @@ function Accounts_payable() {
           </tr>
         </tbody>
       </Table>
-    </Table_container>
+    </TableContainer>
   );
 }
 

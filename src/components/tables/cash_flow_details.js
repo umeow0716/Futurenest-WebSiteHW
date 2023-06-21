@@ -1,8 +1,8 @@
 import React from "react";
-import { Table, Table_container } from "./styled_table";
+import { Table, TableContainer } from "./styled_table";
 function Cash_flow() {
   return (
-    <Table_container>
+    <TableContainer>
       <h3>Cash Flow Details</h3>
       <hr />
       <Table>
@@ -81,7 +81,7 @@ function Cash_flow() {
           </tr>
         </tbody>
       </Table>
-    </Table_container>
+    </TableContainer>
   );
 }
 export default Cash_flow;

@@ -1,11 +1,11 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
 import styled from 'styled-components'
 import icon from './icon.svg'
 import IconList from './IconList.js'
 
-import Buttons from './Buttons.js'
+import { Right, Down } from './Buttons.js'
 
 const Base = styled.div`
     display: flex;
@@ -27,7 +27,7 @@ const Image = styled.img`
 
 const ItemTitle = (props) => {
     const [data, SetData] = useState(props.data);
-    const [icon, SetIcon] = useState("right" ? <Buttons.right /> : <Buttons.down />);
+    const [icon, SetIcon] = useState("right" ? <Right /> : <Down />);
 
     let Object = styled.button`
         display: flex;
@@ -74,11 +74,11 @@ const ItemTitle = (props) => {
     let change = () => {
         if (data === "right") {
             SetData("down");
-            SetIcon(<Buttons.down />);
+            SetIcon(<Down />);
         }
         else {
             SetData("right");
-            SetIcon(<Buttons.right />);
+            SetIcon(<Right />);
         }
     }
 
@@ -272,8 +272,8 @@ function Sidebar() {
                 <Item icon={IconList.Overview} text="Overview" LastIcon="0" to="/Overview" />
                 <Item icon={IconList.Finance} text="Finance" LastIcon="1">
                     <Element text="Profit And Loss" to="/ProfitAndLoss" />
-                    <Element text="Cash Flow Analysis" />
-                    <Element text="Receivable & Payable" />
+                    <Element text="Cash Flow Analysis" to="/CashFlowAnalysis" />
+                    <Element text="Receivable & Payable" to="/ReceviablePayable" />
                     <Element text="Product Performance" to="/ProductPerfromance" />
                     <Element text="Project Performance" to="/ProjectPerformance" />
                     <Element text="Petty Cash In & Out" to="/PettyCash" />

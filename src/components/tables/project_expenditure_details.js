@@ -1,8 +1,8 @@
 import React from "react";
-import { Table, Table_container } from "./styled_table";
+import { Table, TableContainer } from "./styled_table";
 function Project_expenditure() {
   return (
-    <Table_container>
+    <TableContainer>
       <Table>
         <thead>
           <tr>
@@ -86,7 +86,7 @@ function Project_expenditure() {
           </tr>
         </tbody>
       </Table>
-    </Table_container>
+    </TableContainer>
   );
 }
 export default Project_expenditure;

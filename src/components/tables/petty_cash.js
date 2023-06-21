@@ -1,8 +1,8 @@
 import React from "react";
-import { Table, Table_container } from "./styled_table";
+import { Table, TableContainer } from "./styled_table";
 function Petty_cash() {
   return (
-    <Table_container>
+    <TableContainer>
       <Table>
         <thead>
           <tr class="table_header">
@@ -57,7 +57,7 @@ function Petty_cash() {
           </tr>
         </tbody>
       </Table>
-    </Table_container>
+    </TableContainer>
   );
 }
 export default Petty_cash;

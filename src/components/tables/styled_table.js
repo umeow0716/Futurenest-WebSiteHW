@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Table_container = styled.div`
+export const TableContainer = styled.div`
   margin: 2.86vmin;
   div {
     border-radius: 12px;

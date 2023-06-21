@@ -46,7 +46,7 @@ function Genuine_AI() {
     )
 }
 
-export default {
+const IconList =  {
     Overview,
     Finance,
     Sales,
@@ -54,3 +54,5 @@ export default {
     Invoicing,
     Genuine_AI
 }
+
+export default IconList;

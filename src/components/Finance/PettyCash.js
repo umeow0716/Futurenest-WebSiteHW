@@ -2,8 +2,8 @@ import styled from "styled-components"
 
 import Page from "../Page"
 import Embed from "../Embed"
-import Petty_cash from "../tables/petty_cash";
-import Details_of_pockets from "../tables/detail_of_pocket_money_pad";
+import PettyCashTable from "../tables/petty_cash";
+import DetailsOfPockets from "../tables/detail_of_pocket_money_pad";
 import { ContentBoxData } from "../Sales/BusinessAnalysis"
 
 const FilterButton = styled.span`
@@ -169,12 +169,12 @@ export default function PettyCash(props) {
             <EmbedList>
                 <ThirdEmbed Title="Spend Category Comparison" CustomDot=<FilterButton>Filter: <b>December</b> {FilterDown}</FilterButton> src="https://i.imgur.com/2mkYu2a.png" />
                 <ThirdEmbed Title="Petty cash in and out records" CustomDot=<FilterButton>Filter: <b>December</b> {FilterDown}</FilterButton> >
-                    <Petty_cash />
+                    <PettyCashTable />
                 </ThirdEmbed>
             </EmbedList>
 
             <FourthEmbed Title="Details Of Pocket Money Pad" CustomDot=<FilterButton>Filter: <b>December</b> {FilterDown}</FilterButton> CustomContent={CustomContent}>
-                    <Details_of_pockets />
+                    <DetailsOfPockets />
             </FourthEmbed>
         </span>
     )

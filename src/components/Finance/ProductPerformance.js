@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Embed from "../Embed";
 import Page from "../Page";
 
-import ProjectRevenue from "../tables/project_revnue_details"
 import ProductExpenditure from "../tables/product_revenue_and_expenditure_details"
 
 const FilterDown = <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.59 8.59L12 13.17L7.41 8.59L6 10L12 16L18 10L16.59 8.59Z" fill="black" fill-opacity="0.8"/></svg>
@@ -76,11 +75,6 @@ const Row = styled.span`
   width: 100%;
   margin-top: 1vmin;
   margin-buttom: 1vmin;
-`;
-
-const Padding = styled.span`
-  margin-left: auto;
-  padding: 2vmin;
 `;
 
 const RowTitle = styled.span`
